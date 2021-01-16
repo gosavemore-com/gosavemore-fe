@@ -1,0 +1,29 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: $white-one;
+
+  .logo {
+    max-width: auto;
+    height: 30px;
+  }
+
+  &-layout {
+    ul {
+      display: flex;
+
+      li {
+        padding: 0 20px;
+        text-transform: uppercase;
+        list-style-type: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: $text-color;
+      }
+    }
+  }
+}

@@ -1,3 +1,15 @@
-@import "./_variables";
-@import "./mixins";
-@import "./_navigation";
+@import "./variables";
+@import "./navigation";
+@import "./banner";
+
+body {
+  background-color: $white-two;
+  font-family: "Montserrat", "Roboto", sans-serif;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
