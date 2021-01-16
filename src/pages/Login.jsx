@@ -31,49 +31,43 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="login-layout">
-        <div className="login-layout-intro">
-          <h3>Login to Patriots Channel</h3>
-        </div>
+      <div className="login-intro">
+        <h3>Login to GoSaveMore</h3>
+      </div>
 
-        {/* 
+      {/* 
           --- OAUTH IMPLEMENTATION ---
         <div className="login-oauth"></div> 
         */}
 
-        <div className="login-email">
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <input
-              type="email"
-              ref={register}
-              name="email"
-              placeholder="Email"
-            />
-            <p>{errors.email?.message}</p>
-            <input
-              type="password"
-              ref={register}
-              name="password"
-              placeholder="Password"
-            />
-            <p>{errors.password?.message}</p>
-            <button type="submit" className="login-email-button">
-              Sign In
-            </button>
-            {/* {loginError ? <p>{loginError.data.message}</p> : null} */}
+      <div className="login-form">
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <input type="email" ref={register} name="email" placeholder="Email" />
+          <p>{errors.email?.message}</p>
+          <input
+            type="password"
+            ref={register}
+            name="password"
+            placeholder="Password"
+          />
+          <p>{errors.password?.message}</p>
 
-            <Link to="/forgot" className="link">
-              <p className="link-text">Forgot your password</p>
+          <button type="submit" className="login-email-button">
+            Sign In
+          </button>
+          {/* {loginError ? <p>{loginError.data.message}</p> : null} */}
+
+          <Link to="/forgot" className="link">
+            <p className="link-text">Forgot your password</p>
+          </Link>
+
+          <span className="signup">
+            New to PatriotsChannel?
+            <Link to="/register" className="link">
+              <span className="link-text"> Sign Up</span>
             </Link>
-
-            <span className="signup">
-              New to PatriotsChannel?
-              <Link to="/register" className="link">
-                <span className="link-text"> Sign Up</span>
-              </Link>
-            </span>
-          </form>
-        </div>
+          </span>
+        </form>
       </div>
     </div>
   );

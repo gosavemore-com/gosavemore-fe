@@ -2,12 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px 20px;
   background-color: $white-one;
 
   .logo {
     max-width: auto;
     height: 30px;
+    padding-top: 10px;
   }
 
   &-layout {

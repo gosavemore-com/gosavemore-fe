@@ -1,6 +1,8 @@
 @import "./variables";
+@import "./mixins.scss";
 @import "./navigation";
 @import "./banner";
+@import "./login";
 
 body {
   background-color: $white-two;
@@ -14,8 +16,11 @@ body {
   margin: 0 auto;
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
