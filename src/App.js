@@ -11,13 +11,12 @@ function App() {
       <Router>
         <Banner />
         <Navigation />
-        <div className="container">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-          </Switch>
-        </div>
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </Switch>
       </Router>
     </div>
   );
