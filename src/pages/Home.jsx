@@ -26,7 +26,7 @@ const Home = () => {
   console.log(items);
 
   return (
-    <div className="home">
+    <div className="home container">
       <CarouselSlider />
       <div className="home-list">
         <h3>Featured Items</h3>

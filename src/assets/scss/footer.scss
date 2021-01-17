@@ -1,4 +1,12 @@
 .footer {
   background: $primary-color;
-  height: 80px;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px 0;
+  color: $white-one;
+  font-size: 10px;
 }
