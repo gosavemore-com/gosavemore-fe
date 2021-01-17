@@ -1,6 +1,7 @@
 .slider {
   display: flex;
   @include flex(center, center);
+  background: $black-two;
 
   &-img {
     width: auto;

@@ -2,11 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 18px 20px;
   background-color: $white-one;
   position: fixed;
   width: 100%;
-  top: 38px;
+  top: 33px;
+  left: 0;
   z-index: 999;
 
   .logo {
@@ -48,6 +49,7 @@
 .menu-cart {
   padding-right: 60px;
 }
+
 @media screen and (max-width: 900px) {
   .menu {
     width: 100vw;

@@ -2,18 +2,10 @@ import React from "react";
 import { Carousel } from "antd";
 
 const CarouselSlider = () => {
-  const contentStyle = {
-    height: "200px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "black",
-  };
-
   return (
     <>
       <Carousel autoplay className="slider">
-        <div style={contentStyle}>
+        <div>
           <img
             src="/images/airpods.jpg"
             alt="airpods"

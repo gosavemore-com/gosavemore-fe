@@ -1,15 +1,23 @@
 .app {
-  margin-top: 200px;
+  margin-top: 120px;
 }
 
-.list {
-  &-products {
-    margin-top: 120px;
-    @include flex(center, center);
-    flex-wrap: wrap;
-  }
+.home {
+  min-height: 100vh;
 
-  &-spinner {
-    margin-top: 200px;
+  &-list {
+    h3 {
+      margin: 20px 0;
+      text-transform: uppercase;
+    }
+
+    &-products {
+      @include flex(center, center);
+      flex-wrap: wrap;
+    }
+
+    &-spinner {
+      margin-top: 200px;
+    }
   }
 }

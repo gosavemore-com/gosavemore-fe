@@ -1,23 +1,23 @@
 .product {
   background: $white-one;
-  padding: 20px;
   margin: 10px;
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 180px;
   @include flex(center, center);
   flex-direction: column;
 
   &-image {
     img {
       width: auto;
-      height: 100px;
+      height: 80px;
     }
   }
 
   &-details {
-    @include flex(center, center);
+    align-self: center;
     flex-direction: column;
-    padding: 14px;
+    margin-top: 20px;
+    padding: 0 6px;
     text-align: center;
   }
 }

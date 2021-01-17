@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Banner from "./components/Banner";
 import Navigation from "./components/Navigation";
+import Footer from "./pages/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="app">
       <Router>
-        <Banner />
         <Navigation />
         <div className="container">
           <Switch>
@@ -18,6 +17,7 @@ function App() {
             <Route path="/register" component={Register} />
           </Switch>
         </div>
+        <Footer />
       </Router>
     </div>
   );

@@ -26,16 +26,17 @@ const Home = () => {
   console.log(items);
 
   return (
-    <>
+    <div className="home">
       <CarouselSlider />
-      <div className="list">
+      <div className="home-list">
+        <h3>Featured Items</h3>
         {items ? (
-          <div className="list-products">{productsList}</div>
+          <div className="home-list-products">{productsList}</div>
         ) : (
-          <Spinner className="list-spinner" />
+          <Spinner className="home-list-spinner" />
         )}
       </div>
-    </>
+    </div>
   );
 };
 
