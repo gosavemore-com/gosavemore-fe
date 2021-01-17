@@ -19,19 +19,20 @@
         font-size: 14px;
         width: 900px;
         padding: 14px;
+        border: none;
       }
 
       button {
         padding: 20px 100px;
         text-transform: uppercase;
-        background: $fifth-color;
+        background: $primary-color;
         color: $white-one;
         border: none;
         font-size: 14px;
 
         &:active,
         &:hover {
-          background: $button-hover-color;
+          background: $secondary-color;
           cursor: pointer;
         }
       }
@@ -40,7 +41,7 @@
     .link {
       padding: 20px 0;
       text-decoration: none;
-      color: $primary-color;
+      color: $third-color;
     }
   }
 }

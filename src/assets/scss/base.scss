@@ -3,9 +3,12 @@
 @import "./navigation";
 @import "./banner";
 @import "./login";
+@import "./home";
+@import "./product";
+@import "./carousel";
 
 body {
-  background-color: $white-two;
+  background: $white-two !important;
   font-family: "Montserrat", "Roboto", sans-serif;
   margin: 0px !important;
   padding: 0px !important;

@@ -1,0 +1,10 @@
+.slider {
+  display: flex;
+  @include flex(center, center);
+
+  &-img {
+    width: auto;
+    max-height: 200px;
+    background-size: cover;
+  }
+}

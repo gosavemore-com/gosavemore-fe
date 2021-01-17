@@ -9,9 +9,6 @@ const Navigation = () => {
     current: "home",
   });
 
-  const handleClick = (e) => {
-    setCurrent({ current: e.key });
-  };
   return (
     <div className="menu">
       <div className="menu-logo">
@@ -20,14 +17,14 @@ const Navigation = () => {
         </Link>
       </div>
       <div className="menu-layout">
-        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-          <Menu.Item key="home">
+        <Menu defaultSelectedKeys={["1"]}>
+          <Menu.Item key="1">
             <NavLink to="/">Home</NavLink>
           </Menu.Item>
-          <Menu.Item key="login">
+          <Menu.Item key="2">
             <NavLink to="/login">Login</NavLink>
           </Menu.Item>
-          <Menu.Item key="cart">
+          <Menu.Item key="3" className="menu-cart">
             <NavLink to="/order">{<FaShoppingCart />}</NavLink>
           </Menu.Item>
         </Menu>
