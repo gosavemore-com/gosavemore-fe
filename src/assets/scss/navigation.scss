@@ -36,11 +36,6 @@
           padding-top: 2px;
           font-size: 20px;
         }
-
-        &:hover,
-        &:active {
-          color: $third-color;
-        }
       }
     }
   }
@@ -48,6 +43,10 @@
 
 .menu-cart {
   padding-right: 60px;
+}
+
+.ant-menu-item-selected {
+  background-color: $third-color !important;
 }
 
 @media screen and (max-width: 900px) {
