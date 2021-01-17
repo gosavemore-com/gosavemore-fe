@@ -1,0 +1,11 @@
+.slider {
+  display: flex;
+  @include flex(center, center);
+  background: $black-two;
+
+  &-img {
+    width: auto;
+    max-height: 200px;
+    background-size: cover;
+  }
+}

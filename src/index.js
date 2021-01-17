@@ -3,10 +3,15 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/scss/base.scss";
+import { Provider } from "react-redux";
+import PersistedStore from "./redux/PersistedStore";
+import "antd/dist/antd.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={PersistedStore.getDefaultStore().store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

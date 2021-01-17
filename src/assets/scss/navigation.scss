@@ -1,0 +1,58 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  background-color: $white-one;
+  position: fixed;
+  width: 100%;
+  top: 33px;
+  left: 0;
+  z-index: 999;
+
+  .logo {
+    max-width: auto;
+    height: 30px;
+    padding-top: 10px;
+  }
+
+  &-layout {
+    ul {
+      display: flex;
+      border-right: none;
+
+      li {
+        padding: 0 20px;
+        text-transform: uppercase;
+        list-style-type: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: $text-color;
+        padding: 0 20px;
+
+        svg {
+          padding-top: 2px;
+          font-size: 20px;
+        }
+
+        &:hover,
+        &:active {
+          color: $third-color;
+        }
+      }
+    }
+  }
+}
+
+.menu-cart {
+  padding-right: 60px;
+}
+
+@media screen and (max-width: 900px) {
+  .menu {
+    width: 100vw;
+    flex-direction: column;
+  }
+}
