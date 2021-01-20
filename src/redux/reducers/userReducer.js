@@ -37,7 +37,8 @@ export const users = (state = initialState, { type, payload }) => {
     case LOGOUT_USER_SUCCESS:
       return {
         ...state,
-        isSuccess: payload,
+        isSuccess: false,
+        user: [],
       };
 
     default:

@@ -31,7 +31,7 @@ export const logoutUser = (history) => async (dispatch) => {
     dispatch({ type: LOGOUT_USER_REQUEST });
     localStorage.removeItem("token");
 
-    dispatch({ type: LOGOUT_USER_SUCCESS, payload: false });
+    dispatch({ type: LOGOUT_USER_SUCCESS });
     history.push("/");
   } catch (err) {
     dispatch({ type: LOGOUT_USER_FAIL });
