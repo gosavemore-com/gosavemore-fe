@@ -16,14 +16,12 @@ const Home = () => {
   let productsList;
 
   if (items !== undefined) {
-    productsList = items.map((item, index) => (
+    productsList = items.map((item) => (
       <>
-        <Product key={index} item={item} />
+        <Product key={item.id} item={item} />
       </>
     ));
   }
-
-  console.log(items);
 
   return (
     <div className="home container">

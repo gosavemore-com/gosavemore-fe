@@ -1,74 +1,92 @@
 import React from "react";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-// import { userLogin } from "../redux/actions/userActions";
-// import { useDispatch, useSelector } from "react-redux";
+import { Form, Input, Button } from "antd";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Invalid Email")
-    .required("Please enter a valid email address"),
-  password: yup.string().required("Please enter a password"),
-});
+import { loginUser } from "../redux/actions/userAction";
 
 const Login = () => {
-  // const dispatch = useDispatch();
-  // const history = useHistory();
-  // const { loginError } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { err } = useSelector((state) => state.users);
 
-  const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
-  });
+  const onFinish = (values) => {
+    dispatch(loginUser(values, history));
+  };
 
-  const onSubmit = ({ email, password }, e) => {
-    e.preventDefault();
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
 
-    // dispatch(userLogin(email, password, history));
+  const layout = {
+    labelCol: {
+      span: 4,
+    },
+    wrapperCol: {
+      span: 16,
+    },
   };
 
   return (
     <div className="login">
       <div className="login-intro">
-        <h3>Login to GoSaveMore</h3>
+        <h3>Sign In to GoSaveMore!</h3>
       </div>
+      <Form
+        {...layout}
+        name="basic"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Please input your email!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
 
-      {/* 
-          --- OAUTH IMPLEMENTATION ---
-        <div className="login-oauth"></div> 
-        */}
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your password!",
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+        <div className="login-button">
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Sign In
+            </Button>
+          </Form.Item>
+        </div>
+        <div className="login-error">
+          <p>{err !== undefined ? <p>{err}</p> : null} </p>
+        </div>
 
-      <div className="login-form">
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <input type="email" ref={register} name="email" placeholder="Email" />
-          <p>{errors.email?.message}</p>
-          <input
-            type="password"
-            ref={register}
-            name="password"
-            placeholder="Password"
-          />
-          <p>{errors.password?.message}</p>
+        <Link to="/forgot" className="link">
+          <p className="signup-text">Forgot your password</p>
+        </Link>
 
-          <button type="submit" className="login-email-button">
-            Sign In
-          </button>
-          {/* {loginError ? <p>{loginError.data.message}</p> : null} */}
-
-          <Link to="/forgot" className="link">
-            <p className="link-text">Forgot your password</p>
+        <span className="signup">
+          New to PatriotsChannel?
+          <Link to="/register" className="link">
+            <span>Sign Up</span>
           </Link>
-
-          <span className="signup">
-            New to PatriotsChannel?
-            <Link to="/register" className="link">
-              <span className="link-text"> Sign Up</span>
-            </Link>
-          </span>
-        </form>
-      </div>
+        </span>
+      </Form>
     </div>
   );
 };

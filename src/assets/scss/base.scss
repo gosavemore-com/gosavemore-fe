@@ -7,6 +7,7 @@
 @import "./product";
 @import "./carousel";
 @import "./footer";
+@import "./login";
 
 body {
   background: $white-two !important;
@@ -18,6 +19,7 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding-top: 60px;
 }
 
 h1,
@@ -27,9 +29,4 @@ h4,
 h5,
 h6 {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-}
-
-.container {
-  margin-top: 120px;
-  min-height: calc(100vh - 126px);
 }
