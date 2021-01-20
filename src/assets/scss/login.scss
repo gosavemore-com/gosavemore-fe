@@ -1,47 +1,29 @@
 .login {
+  margin-top: 160px !important;
+
   &-intro {
-    padding-top: 60px;
-    h3 {
-      text-align: center;
-      text-transform: uppercase;
-    }
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    text-align: center;
   }
+}
 
-  &-form {
-    @include flex(center, center);
+.ant-input,
+.ant-input-password {
+  width: 300px !important;
+}
 
-    padding-top: 80px;
+.ant-form {
+  @include flex(center, center);
+  flex-direction: column;
+}
 
-    form {
-      @include flex(center, center);
-      flex-direction: column;
-      input {
-        font-size: 14px;
-        width: 900px;
-        padding: 14px;
-        border: none;
-      }
-
-      button {
-        padding: 20px 100px;
-        text-transform: uppercase;
-        background: $primary-color;
-        color: $white-one;
-        border: none;
-        font-size: 14px;
-
-        &:active,
-        &:hover {
-          background: $secondary-color;
-          cursor: pointer;
-        }
-      }
-    }
-
-    .link {
-      padding: 20px 0;
-      text-decoration: none;
-      color: $third-color;
-    }
+.ant-row {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+.ant-form-item {
+  &-label {
+    padding-right: 40px !important;
   }
 }
