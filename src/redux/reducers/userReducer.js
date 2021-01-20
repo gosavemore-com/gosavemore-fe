@@ -39,6 +39,7 @@ export const users = (state = initialState, { type, payload }) => {
         ...state,
         isSuccess: false,
         user: [],
+        err: "",
       };
 
     default:

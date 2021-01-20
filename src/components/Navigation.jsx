@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink, Link, useHistory } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import logo from "../assets/images/logoName.png";
 import Banner from "./Banner";
+import Categories from "./Categories";
 import { Menu } from "antd";
 import { logoutUser } from "../redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,33 +23,32 @@ const Navigation = () => {
           </Link>
         </div>
         <div className="menu-layout">
-          <Menu defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
+          <Menu>
+            <Menu.Item>
               <NavLink to="/">Home</NavLink>
             </Menu.Item>
 
             {isSuccess ? (
               <>
-                <Menu.Item key="2">
+                <Menu.Item>
                   <NavLink to="/profile">Profile</NavLink>
                 </Menu.Item>
                 <Menu.Item
-                  key="4"
                   className="menu-logout"
                   onClick={() => dispatch(logoutUser(history))}
                 >
                   Logout
                 </Menu.Item>
-                <Menu.Item key="3" className="menu-cart">
+                <Menu.Item>
                   <NavLink to="/order">{<FaShoppingCart />}</NavLink>
                 </Menu.Item>
               </>
             ) : (
               <>
-                <Menu.Item key="2">
+                <Menu.Item>
                   <NavLink to="/login">Login</NavLink>
                 </Menu.Item>
-                <Menu.Item key="3" className="menu-cart">
+                <Menu.Item>
                   <NavLink to="/order">{<FaShoppingCart />}</NavLink>
                 </Menu.Item>
               </>
@@ -56,6 +56,7 @@ const Navigation = () => {
           </Menu>
         </div>
       </div>
+      <Categories className="menu-categories" />
     </>
   );
 };

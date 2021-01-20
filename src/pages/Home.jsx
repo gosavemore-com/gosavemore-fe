@@ -18,13 +18,13 @@ const Home = () => {
   if (items !== undefined) {
     productsList = items.map((item) => (
       <>
-        <Product key={item.id} item={item} />
+        <Product key={item._id} item={item} />
       </>
     ));
   }
 
   return (
-    <div className="home container">
+    <div className="home">
       <CarouselSlider />
       <div className="home-list">
         <h3>Featured Items</h3>

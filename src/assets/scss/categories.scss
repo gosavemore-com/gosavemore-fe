@@ -1,0 +1,26 @@
+.categories {
+  margin-top: 120px;
+  padding: 5px 0;
+  width: 100%;
+  background: $white-three;
+  @include flex(center, center);
+  position: fixed;
+  z-index: 999;
+
+  &-divider {
+    padding: 0 20px;
+    opacity: 0.2;
+  }
+
+  a {
+    font-size: 11px;
+    padding: 10px;
+    color: $gray-five;
+    text-transform: uppercase;
+
+    &:hover,
+    &:active {
+      color: $text-link;
+    }
+  }
+}

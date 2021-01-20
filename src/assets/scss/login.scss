@@ -1,5 +1,5 @@
 .login {
-  margin-top: 160px !important;
+  margin-top: 160px;
   @include flex(center, center);
   flex-direction: column;
 
@@ -15,6 +15,11 @@
       width: 120px;
       margin-top: 40px;
     }
+  }
+
+  &-error {
+    @include flex(center, center);
+    color: $fifth-color;
   }
 }
 
