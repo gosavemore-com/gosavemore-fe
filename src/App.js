@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 
 function App() {
   return (
-    <div className="app">
+    <>
       <Router>
         <Navigation />
         <div className="container">
@@ -19,7 +19,7 @@ function App() {
         </div>
         <Footer />
       </Router>
-    </div>
+    </>
   );
 }
 

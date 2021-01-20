@@ -1,29 +1,36 @@
 .login {
   margin-top: 160px !important;
+  @include flex(center, center);
+  flex-direction: column;
 
   &-intro {
     margin-bottom: 60px;
     text-transform: uppercase;
-    text-align: center;
+  }
+
+  &-button {
+    @include flex(center, center);
+
+    button {
+      width: 120px;
+      margin-top: 40px;
+    }
   }
 }
 
 .ant-input,
 .ant-input-password {
-  width: 300px !important;
+  width: 400px !important;
 }
 
-.ant-form {
+.signup {
   @include flex(center, center);
-  flex-direction: column;
-}
 
-.ant-row {
-  display: flex !important;
-  justify-content: space-between !important;
-}
-.ant-form-item {
-  &-label {
-    padding-right: 40px !important;
+  &-text {
+    @include flex(center, center);
+  }
+
+  span {
+    padding: 0 10px;
   }
 }
