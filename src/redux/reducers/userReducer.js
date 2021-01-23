@@ -3,7 +3,7 @@ import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
   LOGOUT_USER_SUCCESS,
-} from "../constants";
+} from "../constants/users";
 
 let initialState = {
   isLoading: false,

@@ -7,11 +7,7 @@ import {
   LOGOUT_USER_REQUEST,
   LOGOUT_USER_FAIL,
   LOGOUT_USER_SUCCESS,
-  FETCH_PRODUCT_REQUEST,
-  FETCH_USER_REQUEST,
-  FETCH_USER_SUCCESS,
-  FETCH_USER_FAIL,
-} from "../constants";
+} from "../constants/users";
 
 export const loginUser = (emailPasswordData, history) => async (dispatch) => {
   try {
