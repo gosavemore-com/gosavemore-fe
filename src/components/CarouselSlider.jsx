@@ -11,11 +11,7 @@ const CarouselSlider = () => {
         {featured !== undefined
           ? featured.map((item) => (
               <>
-                <img
-                  src={item.image[0]}
-                  alt="airpods"
-                  className="carousel-img"
-                />
+                <img src={item.image[0]} alt="airpods" className="slider-img" />
               </>
             ))
           : null}

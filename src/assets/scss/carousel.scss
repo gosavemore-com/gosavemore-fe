@@ -1,11 +1,12 @@
 .slider {
   display: flex;
   @include flex(center, center);
-  background: $black-two;
+  background: $white-one;
 
   &-img {
+    align-self: center;
     width: auto;
-    max-height: 200px;
+    height: 400px;
     background-size: cover;
   }
 }

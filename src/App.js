@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PrivateRoute from "./util/PrivateRoute";
 import Profile from "./pages/Profile";
+import CategoriesRenderer from "./components/CategoriesRenderer";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route
+              path="/categories/:category"
+              component={CategoriesRenderer}
+            />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
         </div>
