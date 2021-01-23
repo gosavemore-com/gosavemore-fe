@@ -11,7 +11,7 @@ const ImageSlider = ({ images }) => {
       </Image.PreviewGroup>
       <div className="image-container">
         {images.map((image) => (
-          <img src={image} onClick={() => setImagePreview(image)} />
+          <img src={image} onMouseEnter={() => setImagePreview(image)} />
         ))}
       </div>
     </>
