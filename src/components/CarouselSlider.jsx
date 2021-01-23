@@ -1,30 +1,20 @@
 import React from "react";
 import { Carousel } from "antd";
+import { useSelector } from "react-redux";
 
 const CarouselSlider = () => {
+  const { featured } = useSelector((state) => state.products);
+
   return (
     <>
       <Carousel autoplay className="slider">
-        <div>
-          <img
-            src="/images/airpods.jpg"
-            alt="airpods"
-            className="carousel-img"
-          />
-        </div>
-        <div>
-          <img src="/images/alexa.jpg" alt="airpods" className="carousel-img" />
-        </div>
-        <div>
-          <img
-            src="/images/camera.jpg"
-            alt="airpods"
-            className="carousel-img"
-          />
-        </div>
-        <div>
-          <img src="/images/mouse.jpg" alt="airpods" className="carousel-img" />
-        </div>
+        {featured !== undefined
+          ? featured.map((item) => (
+              <>
+                <img src={item.image[0]} alt="airpods" className="slider-img" />
+              </>
+            ))
+          : null}
       </Carousel>
     </>
   );
