@@ -1,2 +1,10 @@
 .image-container {
+  border: red 2px solid;
+  width: 400px;
+
+  img {
+    height: 80px !important;
+    width: auto;
+    margin: 4px;
+  }
 }
