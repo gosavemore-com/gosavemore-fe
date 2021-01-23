@@ -17,7 +17,8 @@
   &-body {
     @include flex(center, center);
     flex-direction: column;
-    height: 80px;
+    height: 90px;
+    padding: 10px 0;
 
     h3 {
       font-size: 14px;
