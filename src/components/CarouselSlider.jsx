@@ -10,9 +10,16 @@ const CarouselSlider = () => {
       <Carousel autoplay className="slider">
         {featured !== undefined
           ? featured.map((item) => (
-              <>
-                <img src={item.image[0]} alt="airpods" className="slider-img" />
-              </>
+              <div className="slider-layout">
+                <div>
+                  <img
+                    src={item.image[0]}
+                    alt="airpods"
+                    className="slider-img"
+                  />
+                </div>
+                <h3>{item.name}</h3>
+              </div>
             ))
           : null}
       </Carousel>
