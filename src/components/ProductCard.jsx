@@ -1,15 +1,20 @@
 import React from "react";
-import { Carousel, Image } from "antd";
+import { Button, Card } from "antd";
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ product }) => {
+  const { Meta } = Card;
   return (
-    <div className="card">
-      <Carousel>
-        <Image src={item.image[0]} className="card-image" />
-      </Carousel>
-      <h3>{item.name}</h3>
-      <h4>${item.price}</h4>
-    </div>
+    <>
+      <Card
+        hoverable
+        style={{ width: 240 }}
+        cover={<img alt="example" src={product.image[0]} />}
+        actions={[<Button type="primary">Add to Cart</Button>]}
+      >
+        <h3>{product.name}</h3>
+        <p>${product.price}</p>
+      </Card>
+    </>
   );
 };
 

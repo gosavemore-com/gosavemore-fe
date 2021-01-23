@@ -4,33 +4,16 @@ import { fetchProductFeatured } from "../redux/actions/productsAction";
 import Spinner from "../components/Spinner";
 import Product from "../components/Product";
 import CarouselSlider from "../components/CarouselSlider";
-import { useRouteMatch } from "react-router-dom";
-import {
-  fetchProductCategoriesDrinks,
-  fetchProductCategoriesBottledCanned,
-  fetchProductCategoriesNoodles,
-  fetchProductCategoriesRiceGrains,
-  fetchProductCategoriesSaucesSeasonings,
-} from "../redux/actions/productsAction";
+import { fetchProducts } from "../redux/actions/productsAction";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const {
-    params: { category },
-  } = useRouteMatch();
+
   const { featured } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(fetchProductFeatured());
-    if (category === "drinks") dispatch(fetchProductCategoriesDrinks(category));
-    if (category === "bottled-&-canned")
-      dispatch(fetchProductCategoriesBottledCanned(category));
-    if (category === "noodles")
-      dispatch(fetchProductCategoriesNoodles(category));
-    if (category === "rice-&-grains")
-      dispatch(fetchProductCategoriesRiceGrains(category));
-    if (category === "sauces-&-seasonings")
-      dispatch(fetchProductCategoriesSaucesSeasonings(category));
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   let productsList;

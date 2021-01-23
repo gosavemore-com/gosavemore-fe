@@ -1,22 +1,31 @@
-.card {
-  height: 280px;
-  width: 240px;
-  padding: 10px;
-  margin: 10px;
+.ant-card {
+  margin: 10px !important;
+  height: 320px;
 
-  background: $white-one !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
   flex-direction: column;
 
-  h3 {
-    text-align: center;
-  }
-}
+  &-cover {
+    @include flex(center, center);
 
-.ant-image {
-  img {
-    height: 140px !important;
+    img {
+      width: auto;
+      height: 120px;
+    }
+  }
+
+  &-body {
+    @include flex(center, center);
+    flex-direction: column;
+    height: 80px;
+
+    h3 {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  button {
+    margin: 4px 0;
   }
 }
