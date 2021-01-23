@@ -1,0 +1,18 @@
+.homeCard {
+  .ant-card {
+    width: 180px !important;
+    height: 200px !important;
+
+    &-cover {
+      img {
+        height: 100px;
+      }
+    }
+  }
+}
+
+.meta-title {
+  text-align: center;
+  font-size: 12px;
+  font-weight: bolder;
+}

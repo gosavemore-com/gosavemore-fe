@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductFeatured } from "../redux/actions/productsAction";
 import Spinner from "../components/Spinner";
-import Product from "../components/Product";
+import FeaturedList from "../components/FeaturedList";
 import CarouselSlider from "../components/CarouselSlider";
 import { fetchProducts } from "../redux/actions/productsAction";
 
@@ -21,7 +21,7 @@ const Home = () => {
   if (featured !== undefined) {
     productsList = featured.map((item) => (
       <>
-        <Product key={item._id} item={item} />
+        <FeaturedList key={item._id} item={item} />
       </>
     ));
   }
