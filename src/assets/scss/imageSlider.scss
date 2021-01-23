@@ -1,10 +1,26 @@
-.image-container {
-  border: red 2px solid;
-  width: 400px;
+.image {
+  max-width: 400px;
+  &-container {
+    width: 400px;
 
+    img {
+      height: 80px !important;
+      width: auto;
+      margin: 4px;
+    }
+  }
+
+  &-preview {
+    display: none;
+  }
+}
+
+.ant-image {
   img {
-    height: 80px !important;
-    width: auto;
-    margin: 4px;
+    width: 400px;
+  }
+
+  &-mask {
+    width: 400px;
   }
 }
