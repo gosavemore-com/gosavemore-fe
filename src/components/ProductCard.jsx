@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Card } from "antd";
 
 const ProductCard = ({ product }) => {
-  const { Meta } = Card;
   return (
     <>
       <Card
