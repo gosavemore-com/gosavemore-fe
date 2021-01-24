@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <>
+    <div className="productCard">
       <Card
         hoverable
         style={{ width: 240 }}
@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
         </Link>
         <p>${product.price}</p>
       </Card>
-    </>
+    </div>
   );
 };
 

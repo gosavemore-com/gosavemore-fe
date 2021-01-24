@@ -3,6 +3,7 @@ import { useRouteMatch } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import ProductCard from "./ProductCard";
+import Spinner from "./Spinner";
 
 const CategoriesRenderer = () => {
   const {
@@ -16,9 +17,11 @@ const CategoriesRenderer = () => {
 
   return (
     <div className="categories-layout">
-      {filteredItems.map((product) => (
-        <ProductCard product={product} />
-      ))}
+      {filteredItems ? (
+        filteredItems.map((product) => <ProductCard product={product} />)
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };

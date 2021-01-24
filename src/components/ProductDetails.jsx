@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductId } from "../redux/actions/productsAction";
 import ImageSlider from "./ImageSlider";
 import { Button } from "antd";
+import Spinner from "./Spinner";
 
 const ProductDetails = (props) => {
   let id = props.match.params.id;
@@ -15,15 +16,21 @@ const ProductDetails = (props) => {
   }, [dispatch]);
   return (
     <div className="details">
-      <ImageSlider key={item._id} images={item.image} />
+      {item ? (
+        <>
+          <ImageSlider key={item._id} images={item.image} />
 
-      <div className="details-description">
-        <h2>{item.name}</h2>
-        <h3>Price: ${item.price}</h3>
-        <p>Brand: {item.brand}</p>
-        <p>Description: {item.description}</p>
-        <Button type="primary">Add to Cart</Button>
-      </div>
+          <div className="details-description">
+            <h2>{item.name}</h2>
+            <h3>Price: ${item.price}</h3>
+            <p>Brand: {item.brand}</p>
+            <p>Description: {item.description}</p>
+            <Button type="primary">Add to Cart</Button>
+          </div>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };

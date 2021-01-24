@@ -8,6 +8,9 @@ import {
   FETCH_PRODUCT_ID_REQUEST,
   FETCH_PRODUCT_ID_SUCCESS,
   FETCH_PRODUCT_ID_FAIL,
+  FETCH_ADVERTISEMENT_REQUEST,
+  FETCH_ADVERTISEMENT_SUCCESS,
+  FETCH_ADVERTISEMENT_FAIL,
 } from "../constants/products";
 
 let initialState = {
@@ -16,6 +19,7 @@ let initialState = {
   items: [],
   item: [],
   featured: [],
+  advertisements: [],
   err: "",
 };
 
@@ -43,6 +47,19 @@ export const products = (state = initialState, { type, payload }) => {
     case FETCH_PRODUCT_ID_SUCCESS:
       return { ...state, isLoading: false, isSuccess: true, item: payload };
     case FETCH_PRODUCT_ID_FAIL:
+      return { ...state, isSuccess: false };
+
+    // fetch a product id
+    case FETCH_ADVERTISEMENT_REQUEST:
+      return { ...state, isLoading: true };
+    case FETCH_ADVERTISEMENT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isSuccess: true,
+        advertisements: payload,
+      };
+    case FETCH_ADVERTISEMENT_FAIL:
       return { ...state, isSuccess: false };
 
     default:
