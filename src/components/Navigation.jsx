@@ -40,9 +40,10 @@ const Navigation = () => {
                 </Menu.Item>
                 <Menu.Item
                   className="menu-logout"
-                  onClick={() =>
-                    dispatch(logoutUser(history), setCurrent("home"))
-                  }
+                  onClick={() => {
+                    dispatch(logoutUser(history), setCurrent("home"));
+                    localStorage.removeItem("localData");
+                  }}
                 >
                   Logout
                 </Menu.Item>
