@@ -58,9 +58,7 @@ export const fetchAdvertisement = () => async (dispatch) => {
     dispatch({ type: FETCH_ADVERTISEMENT_REQUEST });
     const { data } = await axiosRoute().get("/api/advertisements");
 
-    console.log("this is the data", data);
-
-    // dispatch({ type: FETCH_ADVERTISEMENT_SUCCESS, payload: data });
+    dispatch({ type: FETCH_ADVERTISEMENT_SUCCESS, payload: data });
   } catch (err) {
     dispatch({ type: FETCH_ADVERTISEMENT_FAIL, payload: err.response });
   }

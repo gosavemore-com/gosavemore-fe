@@ -4,16 +4,20 @@ import { fetchProductFeatured } from "../redux/actions/productsAction";
 import Spinner from "../components/Spinner";
 import FeaturedList from "../components/FeaturedList";
 import CarouselSlider from "../components/CarouselSlider";
-import { fetchProducts } from "../redux/actions/productsAction";
+import {
+  fetchProducts,
+  fetchAdvertisement,
+} from "../redux/actions/productsAction";
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const { featured } = useSelector((state) => state.products);
+  const { featured, advertisements } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(fetchProductFeatured());
     dispatch(fetchProducts());
+    dispatch(fetchAdvertisement());
   }, [dispatch]);
 
   let productsList;
@@ -28,7 +32,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <CarouselSlider />
+      <CarouselSlider advertisements={advertisements} />
       <div className="home-list">
         <h3>Featured Items</h3>
         {featured ? (
