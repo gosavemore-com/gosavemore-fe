@@ -54,11 +54,8 @@ Framework was chosen because of:
 
 # UI Design Libraries
 
-- grommet
-- grommet-icons
-- styled-components
-- priceline-design-system
-- react-inlinesvg
+- Balsamiq Mockups 3
+- Affinity Photo
 
 #### Front end deployed in Netlify
 
