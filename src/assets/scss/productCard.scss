@@ -1,7 +1,7 @@
 .productCard {
   .ant-card {
     margin: 10px !important;
-    height: 320px;
+    height: 360px;
 
     @include flex(center, center);
     flex-direction: column;
@@ -18,13 +18,14 @@
     &-body {
       @include flex(center, center);
       flex-direction: column;
-      height: 90px;
+      height: 120px;
       padding: 10px;
 
       h3 {
         font-size: 14px;
         font-weight: bolder;
         text-align: center;
+        margin-top: 40px;
 
         &:hover,
         &:active {
