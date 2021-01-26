@@ -4,13 +4,15 @@
 @import "./banner";
 @import "./login";
 @import "./home";
-@import "./product";
 @import "./carousel";
 @import "./footer";
 @import "./login";
 @import "./profile";
 @import "./categories";
 @import "./productCard";
+@import "./productDetails";
+@import "./imageSlider";
+@import "./homeCard";
 
 body {
   background: $white-two !important;
@@ -21,6 +23,7 @@ body {
 
 .container {
   max-width: 1200px;
+  min-height: 100vh;
   margin: 0 auto;
   padding-top: 60px;
 }

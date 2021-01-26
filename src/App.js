@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import PrivateRoute from "./util/PrivateRoute";
 import Profile from "./pages/Profile";
 import CategoriesRenderer from "./components/CategoriesRenderer";
+import ProductDetails from "./components/ProductDetails";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               path="/categories/:category"
               component={CategoriesRenderer}
             />
+            <Route path="/product/:id" component={ProductDetails} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
         </div>

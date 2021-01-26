@@ -1,32 +1,40 @@
-.ant-card {
-  margin: 10px !important;
-  height: 320px;
+.productCard {
+  .ant-card {
+    margin: 10px !important;
+    height: 320px;
 
-  @include flex(center, center);
-  flex-direction: column;
-
-  &-cover {
-    @include flex(center, center);
-
-    img {
-      width: auto;
-      height: 120px;
-    }
-  }
-
-  &-body {
     @include flex(center, center);
     flex-direction: column;
-    height: 90px;
-    padding: 10px 0;
 
-    h3 {
-      font-size: 14px;
-      text-align: center;
+    &-cover {
+      @include flex(center, center);
+
+      img {
+        width: auto;
+        height: 120px;
+      }
     }
-  }
 
-  button {
-    margin: 4px 0;
+    &-body {
+      @include flex(center, center);
+      flex-direction: column;
+      height: 90px;
+      padding: 10px;
+
+      h3 {
+        font-size: 14px;
+        font-weight: bolder;
+        text-align: center;
+
+        &:hover,
+        &:active {
+          color: $text-link !important;
+        }
+      }
+    }
+
+    button {
+      margin: 4px 0;
+    }
   }
 }
