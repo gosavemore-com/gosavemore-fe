@@ -1,48 +1,31 @@
-# Safe Mothers Safe Babies
+# GOSAVEMORE
 
 You can find the deployed project at:
 
-Staging: [staging-fe-labs17-safe](https://staging-fe-labs17-safe.herokuapp.com/)  
-Production: [production-fe-labs17-safe](https://production-fe-labs17-safe.herokuapp.com/)
-
-[View the project demo](https://www.youtube.com/watch?v=KM4jNYUOg7Y&t=8s)
+Production: www.gosavemore.com
 
 ## Contributors
 
 
 <br>
 
-|                                       [Dennis Mercado](https://github.com/denmercs) |     |
-| :-----------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: | --: |
-|  [<img src="https://avatars2.githubusercontent.com/u/12239322?s=400&v=4" width = "200" />](https://github.com/denmercs)   
-
+[Dennis Mercado](https://github.com/denmercs) |     |
+<img src="https://avatars2.githubusercontent.com/u/12239322?s=400&v=4" width = "200" />](https://github.com/denmercs)  
 <br>
 
-## Contributors
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Project Overview
 
-[Trello Board](https://trello.com/b/SkTkGFkc/labs17-safe-mothers)
+[Trello Board](https://trello.com/b/Z4xoywdv/gosavemore)
 
-[Product Canvas](https://www.notion.so/SAFE-Mothers-fa66eb370c2b4a20a10f3f3159542c74)
+GoSaveMore.com is a future business ventured and currently registerd as an LLC in Wisconsin.
+This is a Filipino Ecommerce website using ReactJS as a frontend and NodeJS as a backend. 
 
-[UX Design files](https://www.figma.com/file/gUEga1dX7l0CCPsthYSQr0/Labs17_Safe-Mothers%2C-Alexander-Vargas?node-id=192%3A14)
-
-Safe Mother, Safe Babies is a non-profit organization whose goal is to increase health facility access to pregnant mothers residing in Ugandan Villages. The organization relies on data collection of Mothers and volunteer drivers whose information is stored on a database and accessed for risk evaluation and SMS communication purposes. The app consists of several parts:
-
-- Administrative Dashboard that will display mother and driver data from the database.
-- Allow the user to perform CRUD operations on the available data
-- Give the user the ability to upload data
-- Interact and control the dispatch of drivers to mothers in need
 
 ### Key Features
 
-- Mother CRUD functions
-- Driver CRUD functions
+- Product CRUD functions
+- User CRUD functions
 - Administrative user CRUD functions
 
 ## Tech Stack
@@ -51,7 +34,7 @@ Safe Mother, Safe Babies is a non-profit organization whose goal is to increase 
 
 React
 
-We chose these frameworks because:
+Framework was chosen because of:
 
 - Scalability
 - Ease of readability for the next team who builds on to this project
@@ -62,13 +45,11 @@ We chose these frameworks because:
 ## Libraries
 
 - axios
-- formik
-- yup
+- ant.design
 - react-dom
 - react-redux
 - react-router-dom
 - react-scripts
-- redux-persist
 - redux-thunk
 
 # UI Design Libraries
@@ -79,9 +60,9 @@ We chose these frameworks because:
 - priceline-design-system
 - react-inlinesvg
 
-#### Front end deployed to Heroku
+#### Front end deployed in Netlify
 
-#### [Back end](https://github.com/Lambda-School-Labs/safe-mothers-be) built using:
+#### [Back end](https://gosavemore.herokuapp.com/) built using:
 
 # NodeJS + ExpressJS
 
@@ -96,26 +77,21 @@ We chose these frameworks because:
 - cors
 - dotenv
 - express
-- fuse. js
 - helmet
 - jsonwebtoken
 - knex
 - knex-cleaner
-- pg
-- sqlite3
+- mongodb
 
 # APIs
 
-API documentation can be found [here](https://documenter.getpostman.com/view/6290768/SW7UcWoB?version=latest)
+API documentation can be found [here](https://documenter.getpostman.com/view/6848961/TW6urAMX)
 
 # Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-    REACT_APP_API_URL- will be the base URL for the specific back-end server that the client will be using.
-    REACT_APP_MIXPANEL_TOKEN= store MixPanel token here for analytics (required for Mixpanel)
-    REACT_APP_NODE_ENV=production (required for Mixpanel analytics)
-    ** Mixpanel needs the REACT_APP_NODE_ENV variable set to "production" for it to work. **
+    REACT_APP_BACKEND_URL=https://gosavemore.herokuapp.com/
 
 # Content Licenses
 
