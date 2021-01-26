@@ -16,7 +16,7 @@ const ProductDetails = (props) => {
   }, [dispatch]);
   return (
     <div className="details">
-      {item ? (
+      {item !== undefined ? (
         <>
           <ImageSlider key={item._id} images={item.image} />
 

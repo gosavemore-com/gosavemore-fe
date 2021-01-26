@@ -47,7 +47,6 @@ export const fetchProductId = (id) => async (dispatch) => {
     const { data } = await axiosRoute().get(`/api/products/${id}`);
 
     dispatch({ type: FETCH_PRODUCT_ID_SUCCESS, payload: data });
-    console.log(data);
   } catch (err) {
     dispatch({ type: FETCH_PRODUCT_ID_FAIL, payload: err.response });
   }

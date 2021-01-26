@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image } from "antd";
 
 const ImageSlider = ({ images }) => {
-  const [imagePreview, setImagePreview] = useState(images[0]);
+  const [imagePreview, setImagePreview] = useState(images[0] || "");
 
   return (
     <div className="image">

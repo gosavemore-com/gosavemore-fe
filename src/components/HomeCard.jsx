@@ -1,20 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card } from "antd";
 
 const HomeCard = ({ item }) => {
-  const { Meta } = Card;
-
   return (
     <div className="homeCard">
-      <Card
-        hoverable
-        style={{ width: 240 }}
-        cover={<img alt="example" src={item.image[0]} />}
-      >
-        <div className="meta-title">
-          <p>{item.name}</p>
-        </div>
-      </Card>
+      <Link to={`/product/${item._id}`}>
+        <Card
+          hoverable
+          style={{ width: 240 }}
+          cover={<img alt="example" src={item.image[0]} />}
+        >
+          <div className="meta-title">
+            <p>{item.name}</p>
+          </div>
+        </Card>
+      </Link>
     </div>
   );
 };

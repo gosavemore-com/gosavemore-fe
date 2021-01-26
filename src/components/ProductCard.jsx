@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Card } from "antd";
+import { Card } from "antd";
 import { Link } from "react-router-dom";
+import Ratings from "./Ratings";
 
 const ProductCard = ({ product }) => {
   return (
@@ -13,6 +14,8 @@ const ProductCard = ({ product }) => {
         >
           <h3>{product.name}</h3>
           <p>${product.price}</p>
+          <p>the value{product.rating}</p>
+          <Ratings value={product.rating} />
         </Card>
       </Link>
     </div>
