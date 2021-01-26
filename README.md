@@ -8,10 +8,11 @@ Production: www.gosavemore.com
 
 
 <br>
-[Dennis Mercado](https://github.com/denmercs)
+[Dennis Mercado]
+(https://github.com/denmercs)
 <br>
 <br>
-<img src="https://avatars2.githubusercontent.com/u/12239322?s=400&v=4" width = "200" />](https://github.com/denmercs)  
+<img src="https://avatars2.githubusercontent.com/u/12239322?s=400&v=4" width = "200" /> 
 <br>
 
 
