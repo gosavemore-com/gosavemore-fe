@@ -7,6 +7,9 @@ import {
   LOGOUT_USER_REQUEST,
   LOGOUT_USER_FAIL,
   LOGOUT_USER_SUCCESS,
+  REGISTER_USER_REQUEST,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAIL,
 } from "../constants/users";
 
 export const loginUser = (emailPasswordData, history) => async (dispatch) => {
@@ -36,5 +39,21 @@ export const logoutUser = (history) => async (dispatch) => {
   } catch (err) {
     dispatch({ type: LOGOUT_USER_FAIL });
     console.log(err);
+  }
+};
+
+export const userRegister = (dataForm, history) => async (dispatch) => {
+  try {
+    dispatch({ type: REGISTER_USER_REQUEST });
+    console.log(history);
+
+    const data = await axiosRoute().post("api/users/register", dataForm);
+    dispatch({ type: REGISTER_USER_SUCCESS, payload: data });
+    history.push("/login");
+  } catch (err) {
+    dispatch({
+      type: REGISTER_USER_FAIL,
+      payload: err.response,
+    });
   }
 };

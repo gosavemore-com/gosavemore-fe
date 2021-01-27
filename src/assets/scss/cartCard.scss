@@ -15,9 +15,21 @@
   &-content {
     display: flex;
     flex-direction: column;
+    width: 260px;
   }
 
   &-select {
     width: 100px;
+  }
+
+  &-close {
+    font-size: 28px;
+    color: $fifth-color;
+    margin-left: 20px;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
 }

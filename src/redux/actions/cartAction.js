@@ -3,6 +3,7 @@ import {
   CART_ADD_ITEM_REQUEST,
   CART_ADD_ITEM_SUCCESS,
   CART_ADD_ITEM_FAIL,
+  CART_REMOVE_ITEM,
 } from "../constants/cart";
 
 export const addToCart = (id, quantity) => async (dispatch) => {
@@ -24,4 +25,8 @@ export const addToCart = (id, quantity) => async (dispatch) => {
   } catch (err) {
     dispatch({ type: CART_ADD_ITEM_FAIL, payload: err.response });
   }
+};
+
+export const removeFromCart = (id) => async (dispatch) => {
+  dispatch({ type: CART_REMOVE_ITEM, payload: id });
 };
