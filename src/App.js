@@ -7,7 +7,8 @@ import Register from "./pages/Register";
 import PrivateRoute from "./util/PrivateRoute";
 import Profile from "./pages/Profile";
 import CategoriesRenderer from "./components/CategoriesRenderer";
-import ProductDetails from "./components/ProductDetails";
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             />
             <Route path="/product/:id" component={ProductDetails} />
             <PrivateRoute path="/profile" component={Profile} />
+            <Route path="/cart/:id?" component={Cart} />
           </Switch>
         </div>
         <Footer />
