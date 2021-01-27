@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { NavLink, Link, useHistory } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
 import logo from "../assets/images/logoName.png";
 import Banner from "./Banner";
 import Categories from "./Categories";
 import { Menu } from "antd";
 import { logoutUser } from "../redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
+import CartBadge from "./CartBadge";
 
 const Navigation = () => {
   const { isSuccess } = useSelector((state) => state.users);
@@ -42,13 +42,15 @@ const Navigation = () => {
                   className="menu-logout"
                   onClick={() => {
                     dispatch(logoutUser(history), setCurrent("home"));
-                    localStorage.removeItem("localData");
+                    // localStorage.removeItem("localData");
                   }}
                 >
                   Logout
                 </Menu.Item>
-                <Menu.Item key="order">
-                  <NavLink to="/order">{<FaShoppingCart />}</NavLink>
+                <Menu.Item key="cart">
+                  <NavLink to="/cart">
+                    <CartBadge />
+                  </NavLink>
                 </Menu.Item>
               </>
             ) : (
@@ -56,8 +58,10 @@ const Navigation = () => {
                 <Menu.Item key="login" onClick={() => setCurrent("home")}>
                   <NavLink to="/login">Login</NavLink>
                 </Menu.Item>
-                <Menu.Item key="order">
-                  <NavLink to="/order">{<FaShoppingCart />}</NavLink>
+                <Menu.Item key="cart">
+                  <NavLink to="/cart">
+                    <CartBadge />
+                  </NavLink>
                 </Menu.Item>
               </>
             )}
