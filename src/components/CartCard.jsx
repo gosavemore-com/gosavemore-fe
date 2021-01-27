@@ -1,12 +1,17 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Select, Form } from "antd";
-import { addToCart } from "../redux/actions/cartAction";
+import { addToCart, removeFromCart } from "../redux/actions/cartAction";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const CartCard = ({ item }) => {
   const dispatch = useDispatch();
   const onChangeHandler = (values) => {
     dispatch(addToCart(item.product, values));
+  };
+
+  const onClickHandler = () => {
+    dispatch(removeFromCart(item.product));
   };
   return (
     <div className="cartCard">
@@ -22,6 +27,7 @@ const CartCard = ({ item }) => {
           </Select>
         </Form.Item>
       </div>
+      <AiFillCloseCircle onClick={onClickHandler} className="cartCard-close" />
     </div>
   );
 };

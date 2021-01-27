@@ -3,6 +3,9 @@ import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
   LOGOUT_USER_SUCCESS,
+  REGISTER_USER_REQUEST,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAIL,
 } from "../constants/users";
 
 let initialState = {
@@ -40,6 +43,19 @@ export const users = (state = initialState, { type, payload }) => {
         isSuccess: false,
         user: [],
         err: "",
+      };
+
+    case REGISTER_USER_REQUEST:
+      return {
+        isLoading: true,
+      };
+    case REGISTER_USER_SUCCESS:
+      return {
+        isLoading: false,
+      };
+    case REGISTER_USER_FAIL:
+      return {
+        registerError: payload,
       };
 
     default:

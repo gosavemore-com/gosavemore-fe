@@ -8,7 +8,7 @@ import { addToCart } from "../redux/actions/cartAction";
 const ProductDetails = (props) => {
   let id = props.match.params.id;
   const [form] = Form.useForm();
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
 
   const { items } = useSelector((state) => state.products);

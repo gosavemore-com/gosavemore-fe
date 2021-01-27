@@ -2,6 +2,7 @@ import {
   CART_ADD_ITEM_FAIL,
   CART_ADD_ITEM_REQUEST,
   CART_ADD_ITEM_SUCCESS,
+  CART_REMOVE_ITEM,
 } from "../constants/cart";
 
 let initialState = {
@@ -36,6 +37,13 @@ export const cart = (state = initialState, { type, payload }) => {
 
     case CART_ADD_ITEM_FAIL:
       return { ...state, isSuccess: false };
+
+    case CART_REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x.product !== payload),
+      };
+
     default:
       return state;
   }
