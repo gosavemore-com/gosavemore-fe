@@ -2,6 +2,7 @@ import {
   CART_ADD_ITEM_FAIL,
   CART_ADD_ITEM_REQUEST,
   CART_ADD_ITEM_SUCCESS,
+  CART_CLEAR_ITEMS,
   CART_REMOVE_ITEM,
 } from "../constants/cart";
 
@@ -44,6 +45,11 @@ export const cart = (state = initialState, { type, payload }) => {
         cartItems: state.cartItems.filter((x) => x.product !== payload),
       };
 
+    case CART_CLEAR_ITEMS:
+      return {
+        ...state,
+        cartItems: [],
+      };
     default:
       return state;
   }

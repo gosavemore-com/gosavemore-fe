@@ -7,6 +7,7 @@ import { Menu } from "antd";
 import { logoutUser } from "../redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
 import CartBadge from "./CartBadge";
+import { clearCart } from "../redux/actions/cartAction";
 
 const Navigation = () => {
   const { isSuccess } = useSelector((state) => state.users);
@@ -42,7 +43,7 @@ const Navigation = () => {
                   className="menu-logout"
                   onClick={() => {
                     dispatch(logoutUser(history), setCurrent("home"));
-                    // localStorage.removeItem("localData");
+                    dispatch(clearCart());
                   }}
                 >
                   Logout

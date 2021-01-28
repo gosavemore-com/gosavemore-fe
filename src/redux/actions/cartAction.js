@@ -4,6 +4,7 @@ import {
   CART_ADD_ITEM_SUCCESS,
   CART_ADD_ITEM_FAIL,
   CART_REMOVE_ITEM,
+  CART_CLEAR_ITEMS,
 } from "../constants/cart";
 
 export const addToCart = (id, quantity) => async (dispatch) => {
@@ -29,4 +30,8 @@ export const addToCart = (id, quantity) => async (dispatch) => {
 
 export const removeFromCart = (id) => async (dispatch) => {
   dispatch({ type: CART_REMOVE_ITEM, payload: id });
+};
+
+export const clearCart = () => async (dispatch) => {
+  dispatch({ type: CART_CLEAR_ITEMS });
 };
