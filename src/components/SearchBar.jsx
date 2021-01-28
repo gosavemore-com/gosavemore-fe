@@ -42,7 +42,7 @@ const SearchBar = ({ placeholder, style }) => {
   let options;
 
   if (state.data === undefined) {
-    options = <Option key="0">Search Product</Option>;
+    options = <Option key="0">Enter product name</Option>;
   } else {
     options = state.data.map((item, index) => (
       <Option key={index} title={item.name}>
@@ -51,7 +51,6 @@ const SearchBar = ({ placeholder, style }) => {
     ));
   }
 
-  console.log(state.data);
   return (
     <>
       <Select
