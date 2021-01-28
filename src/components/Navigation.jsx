@@ -8,6 +8,7 @@ import { logoutUser } from "../redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
 import CartBadge from "./CartBadge";
 import { clearCart } from "../redux/actions/cartAction";
+import SearchBar from "./SearchBar";
 
 const Navigation = () => {
   const { isSuccess } = useSelector((state) => state.users);
@@ -27,6 +28,9 @@ const Navigation = () => {
           <Link to="/">
             <img src={logo} alt="gosavemore logo" className="logo" />
           </Link>
+        </div>
+        <div className="menu-searchbar">
+          <SearchBar placeholder="Search Product" style={{ width: 500 }} />
         </div>
         <div className="menu-layout">
           <Menu selectedKeys={[current]} onClick={handleClick}>

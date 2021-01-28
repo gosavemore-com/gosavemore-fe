@@ -12,6 +12,9 @@ import {
   FETCH_ADVERTISEMENT_REQUEST,
   FETCH_ADVERTISEMENT_SUCCESS,
   FETCH_ADVERTISEMENT_FAIL,
+  FETCH_PRODUCTS_SEARCH_REQUEST,
+  FETCH_PRODUCTS_SEARCH_FAIL,
+  FETCH_PRODUCTS_SEARCH_SUCCESS,
 } from "../constants/products";
 
 export const fetchProductFeatured = () => async (dispatch) => {
@@ -60,5 +63,19 @@ export const fetchAdvertisement = () => async (dispatch) => {
     dispatch({ type: FETCH_ADVERTISEMENT_SUCCESS, payload: data });
   } catch (err) {
     dispatch({ type: FETCH_ADVERTISEMENT_FAIL, payload: err.response });
+  }
+};
+
+export const fetchProductsSearch = (queryData) => async (dispatch) => {
+  try {
+    dispatch({ type: FETCH_PRODUCTS_SEARCH_REQUEST });
+    const { data } = await axiosRoute().get(
+      `/api/products/search?${queryData}`
+    );
+
+    dispatch({ type: FETCH_PRODUCTS_SEARCH_SUCCESS, payload: data });
+    console.log(data);
+  } catch (err) {
+    dispatch({ type: FETCH_PRODUCTS_SEARCH_FAIL, payload: err.response });
   }
 };
