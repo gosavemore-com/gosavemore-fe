@@ -45,20 +45,19 @@ const SearchBar = ({ placeholder, style }) => {
     options = <Option key="0">Search Product</Option>;
   } else {
     options = state.data.map((item, index) => (
-      <Option key={index}>
+      <Option key={index} title={item.name}>
         <Link to={`/product/${item._id}`}>{item.name}</Link>
       </Option>
     ));
   }
 
-  console.log("this is the data", state.value);
-
+  console.log(state.data);
   return (
     <>
       <Select
         showSearch
-        value={state.value}
-        showArrow={false}
+        value="Search Product"
+        showArrow={true}
         filterOption={false}
         onSearch={handleSearch}
         onChange={changeHandler}
