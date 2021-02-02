@@ -1,0 +1,27 @@
+.orders {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 160px;
+
+  &-item {
+    max-width: 500px;
+    margin: 20px !important;
+  }
+
+  &-price {
+    margin-right: 40px;
+  }
+
+  &-delivery-form {
+    padding-top: 40px;
+    max-width: 500px;
+    &-select {
+      max-width: 800px !important;
+    }
+
+    &-input {
+      max-width: 500px !important;
+    }
+  }
+}
