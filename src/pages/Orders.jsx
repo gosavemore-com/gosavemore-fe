@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Card, Form, Input, Select } from "antd";
+import { Card, Form, Input, Select, Button } from "antd";
 import { states } from "../util/data";
 
 const Orders = () => {
@@ -14,6 +14,11 @@ const Orders = () => {
       span: 16,
     },
   };
+
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
   return (
     <>
       <div className="orders">
@@ -33,7 +38,12 @@ const Orders = () => {
 
         <div className="orders-delivery">
           <h3>Delivery Address</h3>
-          <Form {...layout} name="delivery" className="orders-delivery-form">
+          <Form
+            {...layout}
+            name="delivery"
+            className="orders-delivery-form"
+            onFinish={onFinish}
+          >
             <Form.Item
               label="Address"
               name="address"
@@ -58,15 +68,15 @@ const Orders = () => {
             >
               <Input className="orders-delivery-form-input" />
             </Form.Item>
-            <Form.Item label="State">
-              <Select className="orders-delivery-form-select">
-                {Object.keys(states).map((state, i) => (
+            <Form.Item label="State" name="state">
+              <Select>
+                {Object.keys(states).map((state) => (
                   <Select.Option value={state}>{states[state]}</Select.Option>
                 ))}
               </Select>
             </Form.Item>
             <Form.Item
-              label="Postal Code"
+              label="Postal"
               name="postal"
               rules={[
                 {
@@ -75,13 +85,16 @@ const Orders = () => {
                 },
               ]}
             >
-              <Input className="orders-delivery-form-input" />
+              <Input />
             </Form.Item>
-            <Form.Item label="Country">
-              <Select className="orders-delivery-form-select">
+            <Form.Item label="Country" name="country">
+              <Select>
                 <Select.Option value={"US"}>United States</Select.Option>
               </Select>
             </Form.Item>
+            <Button type="primary" className="orders-submit" htmlType="submit">
+              Submit
+            </Button>
           </Form>
         </div>
       </div>

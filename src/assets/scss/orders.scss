@@ -13,15 +13,38 @@
     margin-right: 40px;
   }
 
-  &-delivery-form {
-    padding-top: 40px;
-    max-width: 500px;
-    &-select {
-      max-width: 800px !important;
+  &-list {
+    text-align: center;
+    background-color: $white-one;
+    padding: 40px;
+
+    h3 {
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+  }
+
+  &-delivery {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    h3 {
+      text-transform: uppercase;
+      text-align: center;
     }
 
-    &-input {
-      max-width: 500px !important;
+    &-form {
+      padding-top: 40px !important;
+
+      .ant-select {
+        max-width: 200px !important;
+      }
     }
+  }
+
+  &-submit {
+    margin: 0 auto;
+    width: 260px !important;
   }
 }
