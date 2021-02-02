@@ -15,3 +15,5 @@ export const fetchOrders = (order) => async (dispatch) => {
     dispatch({ type: ORDER_CREATE_FAIL, payload: err.response });
   }
 };
+
+export const fetchOrders

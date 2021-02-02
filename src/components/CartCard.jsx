@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { Select, Form } from "antd";
 import { addToCart, removeFromCart } from "../redux/actions/cartAction";
 import { AiFillCloseCircle } from "react-icons/ai";

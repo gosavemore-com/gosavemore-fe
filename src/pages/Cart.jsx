@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CartCard from "../components/CartCard";
+import { Button } from "antd";
 
-const Cart = () => {
+const Cart = ({ history }) => {
   const { cartItems } = useSelector((state) => state.cart);
 
   let cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -21,9 +22,9 @@ const Cart = () => {
           </>
         ) : (
           <>
-            {cartItems.map((item, index) => (
+            {cartItems.map((item) => (
               <>
-                <CartCard key={index} item={item} />
+                <CartCard item={item} />
               </>
             ))}
           </>
@@ -32,6 +33,9 @@ const Cart = () => {
       <div className="cart-subtotal">
         <h3>Subtotal ({cartCount}) Items</h3>
         <h2>Total: ${cartPrice.toFixed(2)}</h2>
+        <Button type="primary" onClick={() => history.push("/orders")}>
+          Proceed to Checkout
+        </Button>
       </div>
     </div>
   );
