@@ -68,7 +68,7 @@ const Orders = () => {
             >
               <Input className="orders-delivery-form-input" />
             </Form.Item>
-            <Form.Item label="State" name="state">
+            <Form.Item label="State" name="state" required>
               <Select>
                 {Object.keys(states).map((state) => (
                   <Select.Option value={state}>{states[state]}</Select.Option>
@@ -87,7 +87,7 @@ const Orders = () => {
             >
               <Input />
             </Form.Item>
-            <Form.Item label="Country" name="country">
+            <Form.Item label="Country" name="country" required>
               <Select>
                 <Select.Option value={"US"}>United States</Select.Option>
               </Select>
