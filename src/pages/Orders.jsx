@@ -2,10 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Card, Form, Input, Select, Button } from "antd";
 import { states } from "../util/data";
+import { useDispatch } from "react-redux";
+import { saveAddress } from "../redux/actions/orderAction";
+import { useHistory } from "react-router-dom";
 
 const Orders = () => {
   const { cartItems } = useSelector((state) => state.cart);
-
+  const dispatch = useDispatch();
+  const history = useHistory();
   const layout = {
     labelCol: {
       span: 4,
@@ -16,7 +20,8 @@ const Orders = () => {
   };
 
   const onFinish = (values) => {
-    console.log(values);
+    dispatch(saveAddress(values));
+    history.push("/payment");
   };
 
   return (

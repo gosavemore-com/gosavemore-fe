@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CartCard from "../components/CartCard";
 import { Button } from "antd";
+import { saveProducts } from "../redux/actions/orderAction";
+import { useHistory } from "react-router-dom";
 
-const Cart = ({ history }) => {
+const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const [disableButton, setDisableButton] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   let cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   let cartPrice = cartItems.reduce(
@@ -14,12 +18,13 @@ const Cart = ({ history }) => {
   );
 
   useEffect(() => {
-    if (cartItems.length !== 0) {
-      setDisableButton(false);
-    } else {
-      setDisableButton(true);
-    }
+    cartItems.length !== 0 ? setDisableButton(false) : setDisableButton(true);
   }, [cartItems]);
+
+  const handleClick = () => {
+    dispatch(saveProducts(cartItems));
+    history.push("/orders");
+  };
 
   return (
     <div className="cart">
@@ -42,11 +47,7 @@ const Cart = ({ history }) => {
       <div className="cart-subtotal">
         <h3>Subtotal ({cartCount}) Items</h3>
         <h2>Total: ${cartPrice.toFixed(2)}</h2>
-        <Button
-          type="primary"
-          onClick={() => history.push("/orders")}
-          disabled={disableButton}
-        >
+        <Button type="primary" disabled={disableButton} onClick={handleClick}>
           Proceed to Checkout
         </Button>
       </div>
