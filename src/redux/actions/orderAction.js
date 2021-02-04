@@ -4,7 +4,9 @@ import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
   ORDER_SAVE_ADDRESS,
+  ORDER_SAVE_PRICE_DETAILS,
   ORDER_SAVE_PRODUCTS,
+  ORDER_LIST_CLEAR,
 } from "../constants/orders";
 
 export const fetchOrders = (order) => async (dispatch) => {
@@ -24,4 +26,12 @@ export const saveAddress = (data) => async (dispatch) => {
 
 export const saveProducts = (data) => async (dispatch) => {
   dispatch({ type: ORDER_SAVE_PRODUCTS, payload: data });
+};
+
+export const savePricingDetails = (data) => async (dispatch) => {
+  dispatch({ type: ORDER_SAVE_PRICE_DETAILS, payload: data });
+};
+
+export const clearOrders = () => async (dispatch) => {
+  dispatch({ type: ORDER_LIST_CLEAR });
 };

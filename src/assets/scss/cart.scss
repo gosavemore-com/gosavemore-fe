@@ -11,10 +11,10 @@
     flex-direction: column;
 
     background: $white-one;
-    height: 200px;
+    height: 300px;
     width: 400px;
 
-    h3 {
+    h3:first-child {
       font-size: 24px;
     }
   }
