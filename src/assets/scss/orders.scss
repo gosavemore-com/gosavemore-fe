@@ -16,7 +16,7 @@
   &-list {
     text-align: center;
     background-color: $white-one;
-    padding: 40px;
+    padding: 20px;
     display: flex;
 
     h3 {
@@ -34,6 +34,10 @@
     }
 
     &-products {
+      h3 {
+        text-align: center;
+        text-transform: uppercase;
+      }
     }
 
     &-pricing {
@@ -46,6 +50,7 @@
     flex-direction: column;
     justify-self: center;
     align-items: center;
+
     h3 {
       text-transform: uppercase;
       text-align: center;
