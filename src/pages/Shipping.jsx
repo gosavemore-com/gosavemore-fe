@@ -134,6 +134,9 @@ const Shipping = () => {
 
           <div className="orders-list-pricing">
             <h3>
+              Pretax Price: <span>${}</span>
+            </h3>
+            <h3>
               Shipping Cost: <span>${shippingPrice}</span>
             </h3>
 

@@ -11,33 +11,39 @@ import {
 } from "../util/pricingCalculation";
 
 const Cart = () => {
+  const [price, setPrice] = useState({
+    cartPrice: 0,
+    cartCount: 0,
+  });
   const { cartItems } = useSelector((state) => state.cart);
   const [disableButton, setDisableButton] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  let cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-  let cartPrice = cartItems.reduce(
-    (acc, item) => acc + item.quantity * item.price,
-    0
-  );
-  let taxPrice = calculateTaxPrice(cartPrice);
-  let shippingPrice = calculateShipping(cartPrice);
   let totalPrice = calculateTotalPrice(
-    cartPrice,
-    shippingPrice,
-    taxPrice
+    price.cartPrice,
+    price.shippingPrice,
+    price.taxPrice
   ).toFixed(2);
 
   useEffect(() => {
     cartItems.length !== 0 ? setDisableButton(false) : setDisableButton(true);
+    setPrice({
+      cartPrice: cartItems.reduce(
+        (acc, item) => acc + item.quantity * item.price,
+        0
+      ),
+      shippingPrice: calculateShipping(price.cartPrice),
+      cartCount: cartItems.reduce((acc, item) => acc + item.quantity, 0),
+      taxPrice: calculateTaxPrice(price.cartPrice),
+    });
   }, [cartItems]);
 
   const handleClick = () => {
     dispatch(saveProducts(cartItems));
     let data = {
-      shippingPrice: shippingPrice,
-      taxPrice: taxPrice,
+      shippingPrice: price.shippingPrice,
+      taxPrice: price.taxPrice,
       totalPrice: totalPrice,
     };
     dispatch(savePricingDetails(data));
@@ -63,10 +69,10 @@ const Cart = () => {
         )}
       </div>
       <div className="cart-subtotal">
-        <h3>Subtotal ({cartCount}) Items</h3>
-        <h3>Before Tax Price: ${cartPrice.toFixed(2)}</h3>
-        <h3>Tax: ${taxPrice}</h3>
-        <h3>Shipping Price: ${shippingPrice}</h3>
+        <h3>Subtotal ({price.cartCount}) Items</h3>
+        <h3>Before Tax Price: ${price.cartPrice.toFixed(2)}</h3>
+        <h3>Tax: ${price.taxPrice}</h3>
+        <h3>Shipping Price: ${price.shippingPrice}</h3>
         <h2>Total: ${totalPrice}</h2>
         <Button type="primary" disabled={disableButton} onClick={handleClick}>
           Proceed to Checkout
