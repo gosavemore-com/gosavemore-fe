@@ -51,7 +51,7 @@ export const orders = (state = initialState, { type, payload }) => {
     case ORDER_SAVE_PRICE_DETAILS:
       return {
         ...state,
-        prices: [...state.prices, payload],
+        prices: payload,
       };
 
     case ORDER_LIST_CLEAR:

@@ -3,15 +3,15 @@ import { useSelector } from "react-redux";
 import { Card, Form, Input, Select, Button } from "antd";
 import { states } from "../util/data";
 import { useDispatch } from "react-redux";
-import { saveAddress, savePricingDetails } from "../redux/actions/orderAction";
+import { saveAddress } from "../redux/actions/orderAction";
 import { useHistory } from "react-router-dom";
-import { calculateShipping } from "../util/pricingCalculation";
 
 const Shipping = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  const { totalPrice } = useSelector((state) => state.orders.prices);
+  const { totalPrice, shippingPrice, taxPrice } = useSelector(
+    (state) => state.orders.prices[0]
+  );
   const dispatch = useDispatch();
-  const shippingPrice = calculateShipping(totalPrice);
 
   const history = useHistory();
   const layout = {
@@ -25,7 +25,6 @@ const Shipping = () => {
 
   const onFinish = (values) => {
     dispatch(saveAddress(values));
-    dispatch(savePricingDetails({ shippingPrice }));
     history.push("/payment");
   };
 
@@ -46,6 +45,10 @@ const Shipping = () => {
           ))}
           <h3>Shipping Cost</h3>
           <p>${shippingPrice}</p>
+          <h3>Tax Price</h3>
+          <p>${taxPrice}</p>
+          <h3>Total Price</h3>
+          <p>${totalPrice}</p>
         </div>
 
         <div className="orders-delivery">
@@ -105,7 +108,7 @@ const Shipping = () => {
               </Select>
             </Form.Item>
             <Button type="primary" className="orders-submit" htmlType="submit">
-              Submit
+              Use this address
             </Button>
           </Form>
         </div>

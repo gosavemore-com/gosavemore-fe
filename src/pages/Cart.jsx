@@ -4,6 +4,11 @@ import CartCard from "../components/CartCard";
 import { Button } from "antd";
 import { saveProducts, savePricingDetails } from "../redux/actions/orderAction";
 import { useHistory } from "react-router-dom";
+import {
+  calculateShipping,
+  calculateTaxPrice,
+  calculateTotalPrice,
+} from "../util/pricingCalculation";
 
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -12,9 +17,17 @@ const Cart = () => {
   const history = useHistory();
 
   let cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-  let cartPrice = cartItems
-    .reduce((acc, item) => acc + item.quantity * item.price, 0)
-    .toFixed(2);
+  let cartPrice = cartItems.reduce(
+    (acc, item) => acc + item.quantity * item.price,
+    0
+  );
+  let taxPrice = calculateTaxPrice(cartPrice);
+  let shippingPrice = calculateShipping(cartPrice);
+  let totalPrice = calculateTotalPrice(
+    cartPrice,
+    shippingPrice,
+    taxPrice
+  ).toFixed(2);
 
   useEffect(() => {
     cartItems.length !== 0 ? setDisableButton(false) : setDisableButton(true);
@@ -22,11 +35,12 @@ const Cart = () => {
 
   const handleClick = () => {
     dispatch(saveProducts(cartItems));
-    dispatch(
-      savePricingDetails({
-        totalPrice: cartPrice,
-      })
-    );
+    let data = {
+      shippingPrice: shippingPrice,
+      taxPrice: taxPrice,
+      totalPrice: cartPrice,
+    };
+    dispatch(savePricingDetails(data));
     history.push("/shipping");
   };
 
@@ -50,7 +64,10 @@ const Cart = () => {
       </div>
       <div className="cart-subtotal">
         <h3>Subtotal ({cartCount}) Items</h3>
-        <h2>Total: ${cartPrice}</h2>
+        <h3>Before Tax Price: ${cartPrice}</h3>
+        <h3>Tax: ${taxPrice}</h3>
+        <h3>Shipping Price: ${shippingPrice}</h3>
+        <h2>Total: ${totalPrice}</h2>
         <Button type="primary" disabled={disableButton} onClick={handleClick}>
           Proceed to Checkout
         </Button>
