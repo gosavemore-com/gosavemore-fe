@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Card, Form, Input, Select, Button, Table, Tag, Space } from "antd";
+import { Card, Form, Input, Select, Button, Table } from "antd";
 import { states } from "../util/data";
 import { useDispatch } from "react-redux";
 import { saveAddress } from "../redux/actions/orderAction";
 import { useHistory } from "react-router-dom";
+import TableOrder from "../components/TableOrder";
 
 const Shipping = () => {
   const [tableData, setTableData] = useState([]);
@@ -36,24 +37,6 @@ const Shipping = () => {
       span: 16,
     },
   };
-
-  const columns = [
-    {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
-      title: "Price",
-      dataIndex: "price",
-      key: "price",
-    },
-    {
-      title: "Quantity",
-      dataIndex: "quantity",
-      key: "quantity",
-    },
-  ];
 
   const onFinish = (values) => {
     dispatch(saveAddress(values));
@@ -127,25 +110,13 @@ const Shipping = () => {
           </Form>
         </div>
         <div className="orders-list">
-          <div className="orders-list-products">
-            <h3>Orders</h3>
-            <Table columns={columns} dataSource={tableData} />
-          </div>
-
-          <div className="orders-list-pricing">
-            <h3>
-              Pretax Price: <span>${cartPrice}</span>
-            </h3>
-            <h3>
-              Shipping Cost: <span>${shippingPrice}</span>
-            </h3>
-
-            <h3>
-              Tax Price: <span>${taxPrice}</span>
-            </h3>
-
-            <h2>Total Price: ${totalPrice}</h2>
-          </div>
+          <TableOrder
+            tableData={tableData}
+            cartPrice={cartPrice}
+            shippingPrice={shippingPrice}
+            taxPrice={taxPrice}
+            totalPrice={totalPrice}
+          />
         </div>
       </div>
     </>
