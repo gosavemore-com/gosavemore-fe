@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Card, Form, Input, Select, Button } from "antd";
+import { Card, Form, Input, Select, Button, Table, Tag, Space } from "antd";
 import { states } from "../util/data";
 import { useDispatch } from "react-redux";
 import { saveAddress } from "../redux/actions/orderAction";
 import { useHistory } from "react-router-dom";
 
 const Shipping = () => {
+  const [tableData, setTableData] = useState([]);
   const { cartItems } = useSelector((state) => state.cart);
   const { totalPrice, shippingPrice, taxPrice } = useSelector(
-    (state) => state.orders.prices[0]
+    (state) => state.orders.prices
   );
   const dispatch = useDispatch();
 
   const history = useHistory();
+
+  useEffect(() => {
+    cartItems.map((item) =>
+      setTableData((data) =>
+        data.concat({
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })
+      )
+    );
+  }, [totalPrice, shippingPrice, taxPrice, cartItems]);
+
   const layout = {
     labelCol: {
       span: 4,
@@ -23,34 +37,34 @@ const Shipping = () => {
     },
   };
 
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+    },
+    {
+      title: "Quantity",
+      dataIndex: "quantity",
+      key: "quantity",
+    },
+  ];
+
   const onFinish = (values) => {
     dispatch(saveAddress(values));
     history.push("/payment");
   };
 
+  console.log("this is the table", tableData);
+
   return (
     <>
       <div className="orders">
-        <div className="orders-list">
-          <h3>Orders</h3>
-          {cartItems.map((item) => (
-            <>
-              <Card type="inner" title={item.name} className="orders-item">
-                <span className="orders-price">Price: ${item.price}</span>
-                <span className="orders-quantity">
-                  Quantity: {item.quantity}
-                </span>
-              </Card>
-            </>
-          ))}
-          <h3>Shipping Cost</h3>
-          <p>${shippingPrice}</p>
-          <h3>Tax Price</h3>
-          <p>${taxPrice}</p>
-          <h3>Total Price</h3>
-          <p>${totalPrice}</p>
-        </div>
-
         <div className="orders-delivery">
           <h3>Delivery Address</h3>
           <Form
@@ -111,6 +125,24 @@ const Shipping = () => {
               Use this address
             </Button>
           </Form>
+        </div>
+        <div className="orders-list">
+          <div className="orders-list-products">
+            <h3>Orders</h3>
+            <Table columns={columns} dataSource={tableData} />
+          </div>
+
+          <div className="orders-list-pricing">
+            <h3>
+              Shipping Cost: <span>${shippingPrice}</span>
+            </h3>
+
+            <h3>
+              Tax Price: <span>${taxPrice}</span>
+            </h3>
+
+            <h2>Total Price: ${totalPrice}</h2>
+          </div>
         </div>
       </div>
     </>

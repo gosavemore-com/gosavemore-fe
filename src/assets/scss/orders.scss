@@ -17,10 +17,27 @@
     text-align: center;
     background-color: $white-one;
     padding: 40px;
+    display: flex;
 
     h3 {
       font-size: 18px;
-      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h2 {
+      font-weight: bolder;
+      margin-top: 40px;
+    }
+
+    h2:first-child {
+      font-weight: normal;
+    }
+
+    &-products {
+    }
+
+    &-pricing {
+      padding: 0 40px;
     }
   }
 
