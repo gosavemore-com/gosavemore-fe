@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 const Shipping = () => {
   const [tableData, setTableData] = useState([]);
   const { cartItems } = useSelector((state) => state.cart);
-  const { totalPrice, shippingPrice, taxPrice } = useSelector(
+  const { totalPrice, shippingPrice, taxPrice, cartPrice } = useSelector(
     (state) => state.orders.prices
   );
   const dispatch = useDispatch();
@@ -134,7 +134,7 @@ const Shipping = () => {
 
           <div className="orders-list-pricing">
             <h3>
-              Pretax Price: <span>${}</span>
+              Pretax Price: <span>${cartPrice}</span>
             </h3>
             <h3>
               Shipping Cost: <span>${shippingPrice}</span>
