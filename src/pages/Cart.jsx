@@ -22,7 +22,7 @@ const Cart = () => {
     0
   );
   let taxPrice = calculateTaxPrice(cartPrice);
-  let shippingPrice = calculateShipping(cartPrice);
+  let shippingPrice = cartPrice === 0 ? 0 : calculateShipping(cartPrice);
   let totalPrice = calculateTotalPrice(
     cartPrice,
     shippingPrice,

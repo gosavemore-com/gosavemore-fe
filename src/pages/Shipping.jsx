@@ -10,9 +10,7 @@ import TableOrder from "../components/TableOrder";
 const Shipping = () => {
   const [tableData, setTableData] = useState([]);
   const { cartItems } = useSelector((state) => state.cart);
-  const { totalPrice, shippingPrice, taxPrice, cartPrice } = useSelector(
-    (state) => state.orders.prices
-  );
+  const { prices } = useSelector((state) => state.orders);
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -27,7 +25,7 @@ const Shipping = () => {
         })
       )
     );
-  }, [totalPrice, shippingPrice, taxPrice, cartItems]);
+  }, [cartItems]);
 
   const layout = {
     labelCol: {
@@ -42,8 +40,6 @@ const Shipping = () => {
     dispatch(saveAddress(values));
     history.push("/payment");
   };
-
-  console.log("this is the table", tableData);
 
   return (
     <>
@@ -110,13 +106,7 @@ const Shipping = () => {
           </Form>
         </div>
         <div className="orders-list">
-          <TableOrder
-            tableData={tableData}
-            cartPrice={cartPrice}
-            shippingPrice={shippingPrice}
-            taxPrice={taxPrice}
-            totalPrice={totalPrice}
-          />
+          <TableOrder tableData={tableData} prices={prices} location="" />
         </div>
       </div>
     </>

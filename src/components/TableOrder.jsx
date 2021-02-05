@@ -1,7 +1,9 @@
 import React from "react";
 import { Table } from "antd";
 
-const TableOrder = ({ tableData, cartPrice, shippingPrice, taxPrice, totalPrice }) => {
+const TableOrder = ({ tableData, prices, location }) => {
+  const { totalPrice, shippingPrice, taxPrice, cartPrice } = prices;
+  const { address, city, state, postal, country } = location;
   const columns = [
     {
       title: "Name",
@@ -39,6 +41,11 @@ const TableOrder = ({ tableData, cartPrice, shippingPrice, taxPrice, totalPrice 
         </h3>
 
         <h2>Total Price: ${totalPrice}</h2>
+      </div>
+      <div className="orders-list-location">
+        <h3>
+          Delivery Address: {address}, {city}. {state}, {postal}, {country}
+        </h3>
       </div>
     </div>
   );

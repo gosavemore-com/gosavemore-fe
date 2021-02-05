@@ -3,7 +3,7 @@ import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
-  ORDER_SAVE_ADDRESS,
+  ORDER_SAVE_LOCATION,
   ORDER_SAVE_PRICE_DETAILS,
   ORDER_SAVE_PRODUCTS,
   ORDER_LIST_CLEAR,
@@ -21,7 +21,7 @@ export const fetchOrders = (order) => async (dispatch) => {
 };
 
 export const saveAddress = (data) => async (dispatch) => {
-  dispatch({ type: ORDER_SAVE_ADDRESS, payload: data });
+  dispatch({ type: ORDER_SAVE_LOCATION, payload: data });
 };
 
 export const saveProducts = (data) => async (dispatch) => {
