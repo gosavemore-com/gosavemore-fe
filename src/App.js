@@ -9,7 +9,7 @@ import Profile from "./pages/Profile";
 import CategoriesRenderer from "./components/CategoriesRenderer";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
-import Orders from "./pages/Orders";
+import Shipping from "./pages/Shipping";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
             />
             <Route path="/product/:id" component={ProductDetails} />
             <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/orders" component={Orders} />
+            <PrivateRoute path="/shipping" component={Shipping} />
             <Route path="/cart/:id?" component={Cart} />
           </Switch>
         </div>

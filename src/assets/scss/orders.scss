@@ -16,11 +16,32 @@
   &-list {
     text-align: center;
     background-color: $white-one;
-    padding: 40px;
+    padding: 20px;
+    display: flex;
 
     h3 {
       font-size: 18px;
-      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h2 {
+      font-weight: bolder;
+      margin-top: 40px;
+    }
+
+    h2:first-child {
+      font-weight: normal;
+    }
+
+    &-products {
+      h3 {
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+
+    &-pricing {
+      padding: 0 40px;
     }
   }
 
@@ -29,6 +50,7 @@
     flex-direction: column;
     justify-self: center;
     align-items: center;
+
     h3 {
       text-transform: uppercase;
       text-align: center;

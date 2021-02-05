@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CartBadge from "./CartBadge";
 import { clearCart } from "../redux/actions/cartAction";
 import SearchBar from "./SearchBar";
+import { clearOrders } from "../redux/actions/orderAction";
 
 const Navigation = () => {
   const { isSuccess } = useSelector((state) => state.users);
@@ -48,6 +49,7 @@ const Navigation = () => {
                   onClick={() => {
                     dispatch(logoutUser(history), setCurrent("home"));
                     dispatch(clearCart());
+                    dispatch(clearOrders());
                   }}
                 >
                   Logout
