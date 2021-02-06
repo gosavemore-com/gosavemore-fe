@@ -2,7 +2,7 @@ import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
   ORDER_CREATE_FAIL,
-  ORDER_SAVE_ADDRESS,
+  ORDER_SAVE_LOCATION,
   ORDER_SAVE_PRODUCTS,
   ORDER_SAVE_PRICE_DETAILS,
   ORDER_LIST_CLEAR,
@@ -12,7 +12,7 @@ let initialState = {
   isLoading: false,
   isSuccess: false,
   order: [],
-  address: [],
+  location: [],
   prices: [],
   payments: [],
   delivery: [],
@@ -42,8 +42,8 @@ export const orders = (state = initialState, { type, payload }) => {
     case ORDER_CREATE_FAIL:
       return { ...state, isSuccess: false, err: payload };
 
-    case ORDER_SAVE_ADDRESS:
-      return { ...state, address: payload };
+    case ORDER_SAVE_LOCATION:
+      return { ...state, location: payload };
 
     case ORDER_SAVE_PRODUCTS:
       return { ...state, order: payload };
@@ -58,7 +58,7 @@ export const orders = (state = initialState, { type, payload }) => {
       return {
         ...state,
         order: [],
-        address: [],
+        location: [],
         prices: [],
         payments: [],
         delivery: [],
