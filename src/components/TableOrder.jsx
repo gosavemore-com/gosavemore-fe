@@ -43,9 +43,11 @@ const TableOrder = ({ tableData, prices, location }) => {
         <h2>Total Price: ${totalPrice}</h2>
       </div>
       <div className="orders-list-location">
-        <h3>
-          Delivery Address: {address}, {city}. {state}, {postal}, {country}
-        </h3>
+        {location !== "" && (
+          <h3>
+            Delivery Address: {address}, {city}. {state}, {postal}, {country}
+          </h3>
+        )}
       </div>
     </div>
   );
