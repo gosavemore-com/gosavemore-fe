@@ -23,6 +23,7 @@ const Payment = () => {
         step2="finish"
         step3="process"
         step4="wait"
+        step5="wait"
       />
       <div>
         <TableOrder tableData={tableData} prices={prices} location={location} />
