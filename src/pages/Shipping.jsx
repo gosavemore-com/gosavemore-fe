@@ -6,11 +6,14 @@ import { useDispatch } from "react-redux";
 import { saveAddress } from "../redux/actions/orderAction";
 import { useHistory } from "react-router-dom";
 import TableOrder from "../components/TableOrder";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 const Shipping = () => {
   const [tableData, setTableData] = useState([]);
   const { cartItems } = useSelector((state) => state.cart);
   const { prices } = useSelector((state) => state.orders);
+  const { location } = useSelector((state) => state.orders);
+
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -43,6 +46,7 @@ const Shipping = () => {
 
   return (
     <>
+      <CheckoutSteps step1="finish" step2="process" step3="wait" step4="wait" />
       <div className="orders">
         <div className="orders-delivery">
           <h3>Delivery Address</h3>
@@ -50,6 +54,13 @@ const Shipping = () => {
             {...layout}
             name="delivery"
             className="orders-delivery-form"
+            initialValues={{
+              address: location && location.address,
+              city: location && location.city,
+              postal: location && location.postal,
+              state: location && location.state,
+              country: location && location.country,
+            }}
             onFinish={onFinish}
           >
             <Form.Item
