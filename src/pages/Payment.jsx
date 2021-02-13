@@ -16,10 +16,15 @@ const Payment = () => {
   );
 
   return (
-    <div>
-      <h3>Billing Details</h3>
-      <TableOrder tableData={tableData} prices={prices} location={location} />
-    </div>
+    <>
+      <div>
+        <h3>Billing Details</h3>
+        <TableOrder tableData={tableData} prices={prices} location={location} />
+      </div>
+      <div>
+        <h3>Payment Choices</h3>
+      </div>
+    </>
   );
 };
 

@@ -11,6 +11,8 @@ const Shipping = () => {
   const [tableData, setTableData] = useState([]);
   const { cartItems } = useSelector((state) => state.cart);
   const { prices } = useSelector((state) => state.orders);
+  const { location } = useSelector((state) => state.orders);
+
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -37,6 +39,7 @@ const Shipping = () => {
   };
 
   const onFinish = (values) => {
+    console.log("this is the default values", values);
     dispatch(saveAddress(values));
     history.push("/payment");
   };
@@ -50,6 +53,11 @@ const Shipping = () => {
             {...layout}
             name="delivery"
             className="orders-delivery-form"
+            initialValues={{
+              address: location && location.address,
+              city: location && location.city,
+              postal: location && location.postal,
+            }}
             onFinish={onFinish}
           >
             <Form.Item
@@ -74,10 +82,13 @@ const Shipping = () => {
                 },
               ]}
             >
-              <Input className="orders-delivery-form-input" />
+              <Input
+                className="orders-delivery-form-input"
+                defaultValue={location && location.city}
+              />
             </Form.Item>
             <Form.Item label="State" name="state" required>
-              <Select>
+              <Select defaultValue={location && location.state}>
                 {Object.keys(states).map((state) => (
                   <Select.Option value={state}>{states[state]}</Select.Option>
                 ))}
@@ -93,10 +104,10 @@ const Shipping = () => {
                 },
               ]}
             >
-              <Input />
+              <Input defaultValue={location && location.postal} />
             </Form.Item>
             <Form.Item label="Country" name="country" required>
-              <Select>
+              <Select defaultValue={location && location.country}>
                 <Select.Option value={"US"}>United States</Select.Option>
               </Select>
             </Form.Item>
