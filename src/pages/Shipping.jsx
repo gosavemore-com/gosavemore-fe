@@ -46,7 +46,13 @@ const Shipping = () => {
 
   return (
     <>
-      <CheckoutSteps step1="finish" step2="process" step3="wait" step4="wait" />
+      <CheckoutSteps
+        step1="finish"
+        step2="process"
+        step3="wait"
+        step4="wait"
+        step5="wait"
+      />
       <div className="orders">
         <div className="orders-delivery">
           <h3>Delivery Address</h3>
