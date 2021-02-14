@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { saveAddress } from "../redux/actions/orderAction";
 import { useHistory } from "react-router-dom";
 import TableOrder from "../components/TableOrder";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 const Shipping = () => {
   const [tableData, setTableData] = useState([]);
@@ -39,13 +40,13 @@ const Shipping = () => {
   };
 
   const onFinish = (values) => {
-    console.log("this is the default values", values);
     dispatch(saveAddress(values));
     history.push("/payment");
   };
 
   return (
     <>
+      <CheckoutSteps step1="finish" step2="process" step3="wait" step4="wait" />
       <div className="orders">
         <div className="orders-delivery">
           <h3>Delivery Address</h3>
@@ -57,6 +58,8 @@ const Shipping = () => {
               address: location && location.address,
               city: location && location.city,
               postal: location && location.postal,
+              state: location && location.state,
+              country: location && location.country,
             }}
             onFinish={onFinish}
           >
@@ -82,13 +85,10 @@ const Shipping = () => {
                 },
               ]}
             >
-              <Input
-                className="orders-delivery-form-input"
-                defaultValue={location && location.city}
-              />
+              <Input className="orders-delivery-form-input" />
             </Form.Item>
             <Form.Item label="State" name="state" required>
-              <Select defaultValue={location && location.state}>
+              <Select>
                 {Object.keys(states).map((state) => (
                   <Select.Option value={state}>{states[state]}</Select.Option>
                 ))}
@@ -104,10 +104,10 @@ const Shipping = () => {
                 },
               ]}
             >
-              <Input defaultValue={location && location.postal} />
+              <Input />
             </Form.Item>
             <Form.Item label="Country" name="country" required>
-              <Select defaultValue={location && location.country}>
+              <Select>
                 <Select.Option value={"US"}>United States</Select.Option>
               </Select>
             </Form.Item>
