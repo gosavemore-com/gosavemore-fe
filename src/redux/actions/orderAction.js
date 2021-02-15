@@ -7,12 +7,13 @@ import {
   ORDER_SAVE_PRICE_DETAILS,
   ORDER_SAVE_PRODUCTS,
   ORDER_LIST_CLEAR,
+  ORDER_SAVE_PAYMENT_DETAILS,
 } from "../constants/orders";
 
-export const fetchOrders = (order) => async (dispatch) => {
+export const createOrder = (orders) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_CREATE_REQUEST });
-    const { data } = await axiosRoute().get(`/api/orders/${order}`);
+    const { data } = await axiosRoute().post("/api/orders", orders);
 
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: data });
   } catch (err) {
@@ -30,6 +31,10 @@ export const saveProducts = (data) => async (dispatch) => {
 
 export const savePricingDetails = (data) => async (dispatch) => {
   dispatch({ type: ORDER_SAVE_PRICE_DETAILS, payload: data });
+};
+
+export const savePaymentDetails = (data) => async (dispatch) => {
+  dispatch({ type: ORDER_SAVE_PAYMENT_DETAILS, payload: data });
 };
 
 export const clearOrders = () => async (dispatch) => {

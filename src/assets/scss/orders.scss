@@ -1,9 +1,8 @@
 .orders {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-top: 160px;
-
+  justify-content: center;
+  margin-top: 40px;
   &-item {
     max-width: 500px;
     margin: 20px !important;
@@ -58,6 +57,8 @@
 
     &-form {
       padding-top: 40px !important;
+      display: flex;
+      flex-direction: column;
 
       .ant-select {
         max-width: 200px !important;
@@ -66,7 +67,7 @@
   }
 
   &-submit {
-    margin: 0 auto;
+    align-self: center;
     width: 260px !important;
   }
 }

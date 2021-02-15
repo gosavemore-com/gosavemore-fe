@@ -15,17 +15,15 @@ const CheckoutSteps = ({ step1, step2, step3, step4, step5 }) => {
   return (
     <div className="steps">
       <Steps>
-        <Step status={step1} title="Login" icon={<FaUserCircle />} />
         <Step
-          status={step2}
+          status={step1}
           title="Shipping Address"
           icon={<FaRegAddressCard />}
         />
-        <Step status={step3} title="Pay" icon={<MdPayment />} />
-        <Step status={step4} title="Place Order" icon={<FaCartArrowDown />} />
-        <Step status={step5} title="Done" icon={<FaCheckCircle />} />
+        <Step status={step2} title="Pay" icon={<MdPayment />} />
+        <Step status={step3} title="Place Order" icon={<FaCartArrowDown />} />
+        <Step status={step4} title="Done" icon={<FaCheckCircle />} />
       </Steps>
-      ,
     </div>
   );
 };
