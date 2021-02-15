@@ -5,14 +5,13 @@ import { states } from "../util/data";
 import { useDispatch } from "react-redux";
 import { saveAddress } from "../redux/actions/orderAction";
 import { useHistory } from "react-router-dom";
-import TableOrder from "../components/TableOrder";
 import CheckoutSteps from "../components/CheckoutSteps";
 
 const Shipping = () => {
   const [tableData, setTableData] = useState([]);
   const { cartItems } = useSelector((state) => state.cart);
   const { prices } = useSelector((state) => state.orders);
-  const { location } = useSelector((state) => state.orders);
+  const { shipping } = useSelector((state) => state.orders);
 
   const dispatch = useDispatch();
 
@@ -46,13 +45,7 @@ const Shipping = () => {
 
   return (
     <>
-      <CheckoutSteps
-        step1="finish"
-        step2="process"
-        step3="wait"
-        step4="wait"
-        step5="wait"
-      />
+      <CheckoutSteps step1="process" step2="wait" step3="wait" step4="wait" />
       <div className="orders">
         <div className="orders-delivery">
           <h3>Delivery Address</h3>
@@ -61,11 +54,11 @@ const Shipping = () => {
             name="delivery"
             className="orders-delivery-form"
             initialValues={{
-              address: location && location.address,
-              city: location && location.city,
-              postal: location && location.postal,
-              state: location && location.state,
-              country: location && location.country,
+              address: shipping && shipping.address,
+              city: shipping && shipping.city,
+              postal: shipping && shipping.postal,
+              state: shipping && shipping.state,
+              country: shipping && shipping.country,
             }}
             onFinish={onFinish}
           >
@@ -121,9 +114,6 @@ const Shipping = () => {
               Use this address
             </Button>
           </Form>
-        </div>
-        <div className="orders-list">
-          <TableOrder tableData={tableData} prices={prices} location="" />
         </div>
       </div>
     </>

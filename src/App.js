@@ -11,6 +11,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Shipping from "./pages/Shipping";
 import Payment from "./pages/Payment";
+import PlaceOrder from "./pages/PlaceOrder";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <PrivateRoute path="/shipping" component={Shipping} />
             <PrivateRoute path="/payment" component={Payment} />
             <Route path="/cart/:id?" component={Cart} />
+            <Route path="/placeorder" component={PlaceOrder} />
           </Switch>
         </div>
         <Footer />

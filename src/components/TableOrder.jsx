@@ -1,9 +1,18 @@
 import React from "react";
 import { Table } from "antd";
+import { useSelector } from "react-redux";
 
-const TableOrder = ({ tableData, prices, location }) => {
-  const { totalPrice, shippingPrice, taxPrice, cartPrice } = prices;
-  const { address, city, state, postal, country } = location;
+const TableOrder = ({ tableData }) => {
+  const { address, city, state, country, postal } = useSelector(
+    (state) => state.orders.shipping
+  );
+
+  const { cartPrice, shippingPrice, taxPrice, totalPrice } = useSelector(
+    (state) => state.orders.prices
+  );
+
+  const { paymentMethod } = useSelector((state) => state.orders.payments);
+
   const columns = [
     {
       title: "Name",
@@ -24,7 +33,7 @@ const TableOrder = ({ tableData, prices, location }) => {
   return (
     <div>
       <div className="orders-list-products">
-        <h3>Orders</h3>
+        <h3>Order Items</h3>
 
         <Table columns={columns} dataSource={tableData} />
       </div>
@@ -43,11 +52,19 @@ const TableOrder = ({ tableData, prices, location }) => {
         <h2>Total Price: ${totalPrice}</h2>
       </div>
       <div className="orders-list-location">
-        {location !== "" && (
-          <h3>
-            Delivery Address: {address}, {city}. {state}, {postal}, {country}
-          </h3>
-        )}
+        <>
+          <h2>Shipping</h2>
+          <p>
+            {address}, {city}. {state}, {postal}, {country}
+          </p>
+        </>
+      </div>
+      <div className="orders-list-payment">
+        <h2>Payment Method</h2>
+        <p>
+          {paymentMethod[0].toUpperCase() +
+            paymentMethod.slice(1, paymentMethod.length)}
+        </p>
       </div>
     </div>
   );

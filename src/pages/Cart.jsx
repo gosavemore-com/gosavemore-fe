@@ -66,10 +66,7 @@ const Cart = () => {
       </div>
       <div className="cart-subtotal">
         <h3>Subtotal ({cartCount}) Items</h3>
-        <h3>Before Tax Price: ${cartPrice.toFixed(2)}</h3>
-        <h3>Tax: ${taxPrice}</h3>
-        <h3>Shipping Price: ${shippingPrice}</h3>
-        <h2>Total: ${totalPrice}</h2>
+        <h3>Price: ${cartPrice.toFixed(2)}</h3>
         <Button type="primary" disabled={disableButton} onClick={handleClick}>
           Proceed to Checkout
         </Button>

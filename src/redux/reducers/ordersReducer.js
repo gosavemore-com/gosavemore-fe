@@ -6,16 +6,16 @@ import {
   ORDER_SAVE_PRODUCTS,
   ORDER_SAVE_PRICE_DETAILS,
   ORDER_LIST_CLEAR,
+  ORDER_SAVE_PAYMENT_DETAILS,
 } from "../constants/orders";
 
 let initialState = {
   isLoading: false,
   isSuccess: false,
   order: [],
-  location: [],
+  shipping: [],
   prices: [],
   payments: [],
-  delivery: [],
   // prices: {
   //   taxPrice: 0,
   //   shippingPrice: 0,
@@ -38,12 +38,12 @@ export const orders = (state = initialState, { type, payload }) => {
     case ORDER_CREATE_REQUEST:
       return { ...state, isLoading: true };
     case ORDER_CREATE_SUCCESS:
-      return { ...state, isLoading: false, isSuccess: true, order: payload };
+      return { ...state, isLoading: false, isSuccess: true };
     case ORDER_CREATE_FAIL:
       return { ...state, isSuccess: false, err: payload };
 
     case ORDER_SAVE_LOCATION:
-      return { ...state, location: payload };
+      return { ...state, shipping: payload };
 
     case ORDER_SAVE_PRODUCTS:
       return { ...state, order: payload };
@@ -54,14 +54,19 @@ export const orders = (state = initialState, { type, payload }) => {
         prices: payload,
       };
 
+    case ORDER_SAVE_PAYMENT_DETAILS:
+      return {
+        ...state,
+        payments: payload,
+      };
+
     case ORDER_LIST_CLEAR:
       return {
         ...state,
         order: [],
-        location: [],
+        shipping: [],
         prices: [],
         payments: [],
-        delivery: [],
       };
     default:
       return state;
