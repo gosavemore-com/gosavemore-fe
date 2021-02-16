@@ -16,9 +16,11 @@
 @import "./cart";
 @import "./cartCard";
 @import "./cartBadge";
-@import "./orders.scss";
+@import "./shipping.scss";
 @import "./checkoutsteps.scss";
 @import "./placeorder.scss";
+@import "./tableorders.scss";
+@import "./payment.scss";
 
 body {
   background: $white-two !important;

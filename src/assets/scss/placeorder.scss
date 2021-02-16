@@ -1,0 +1,14 @@
+.placeorder {
+  display: flex;
+  flex-direction: column;
+
+  &-buttons {
+    align-self: center;
+    margin-top: 60px;
+
+    button {
+      margin: 0 20px;
+      width: 200px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.tableorders {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-top: 60px;
+
+  &-container {
+    padding: 20px;
+    background-color: $white-one;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  h2 {
+    font-weight: 800;
+  }
+}

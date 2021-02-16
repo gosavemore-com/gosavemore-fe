@@ -56,7 +56,6 @@ const PlaceOrder = () => {
         step4="wait"
       />
       <div className="placeorder">
-        <h3>Place Order</h3>
         <div>
           <TableOrder
             tableData={tableData}
@@ -64,13 +63,14 @@ const PlaceOrder = () => {
             location={location}
           />
         </div>
-
-        <Button type="primary" onClick={() => history.push("/payment")}>
-          Back
-        </Button>
-        <Button type="primary" onClick={handleClick}>
-          Place Order
-        </Button>
+        <div className="placeorder-buttons">
+          <Button type="primary" onClick={() => history.push("/payment")}>
+            Back
+          </Button>
+          <Button type="primary" onClick={handleClick}>
+            Place Order
+          </Button>
+        </div>
       </div>
     </>
   );

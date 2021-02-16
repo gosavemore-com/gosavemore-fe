@@ -46,13 +46,13 @@ const Shipping = () => {
   return (
     <>
       <CheckoutSteps step1="process" step2="wait" step3="wait" step4="wait" />
-      <div className="orders">
-        <div className="orders-delivery">
+      <div className="shipping">
+        <div className="shipping-delivery">
           <h3>Delivery Address</h3>
           <Form
             {...layout}
             name="delivery"
-            className="orders-delivery-form"
+            className="shipping-delivery-form"
             initialValues={{
               address: shipping && shipping.address,
               city: shipping && shipping.city,
@@ -72,7 +72,7 @@ const Shipping = () => {
                 },
               ]}
             >
-              <Input className="orders-delivery-form-input" />
+              <Input className="shipping-delivery-form-input" />
             </Form.Item>
             <Form.Item
               label="City"
@@ -84,7 +84,7 @@ const Shipping = () => {
                 },
               ]}
             >
-              <Input className="orders-delivery-form-input" />
+              <Input className="shipping-delivery-form-input" />
             </Form.Item>
             <Form.Item label="State" name="state" required>
               <Select>
@@ -110,7 +110,11 @@ const Shipping = () => {
                 <Select.Option value={"US"}>United States</Select.Option>
               </Select>
             </Form.Item>
-            <Button type="primary" className="orders-submit" htmlType="submit">
+            <Button
+              type="primary"
+              className="shipping-submit"
+              htmlType="submit"
+            >
               Use this address
             </Button>
           </Form>
