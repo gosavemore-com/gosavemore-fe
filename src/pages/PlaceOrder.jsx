@@ -1,21 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "antd";
 import CheckoutSteps from "../components/CheckoutSteps";
-import TableOrder from "../components/TableOrder";
+import OrderDetails from "../components/OrderDetails";
 import { createOrder } from "../redux/actions/orderAction";
 
 const PlaceOrder = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { order, location, prices, payments } = useSelector(
-    (state) => state.orders
+  const { order, prices, payments, shipping } = useSelector(
+    (state) => state.cart
   );
   const { userId } = useSelector((state) => state.users.user);
-  const { address, city, state, postal, country } = useSelector(
-    (state) => state.orders.shipping
-  );
+  const { ordered, isSuccess } = useSelector((state) => state.orders);
+
   let tableData = [];
 
   order.map((item) =>
@@ -26,23 +25,32 @@ const PlaceOrder = () => {
     })
   );
 
+  useEffect(() => {
+    if (isSuccess) history.push(`/order/${ordered._id}`);
+  }, [history, isSuccess, ordered._id]);
+
   const handleClick = () => {
+    let { address, city, state, country } = shipping;
+    let postalCode = shipping.postal;
+    let { cartPrice, taxPrice, shippingPrice, totalPrice } = prices;
+    let { paymentMethod } = payments;
+
     dispatch(
       createOrder({
         user: userId,
         orderItems: order,
         shippingAddress: {
-          address: address,
-          city: city,
-          postalCode: postal,
-          state: state,
-          country: country,
+          address,
+          city,
+          state,
+          country,
+          postalCode,
         },
-        paymentMethod: payments.paymentMethod,
-        itemsPrice: Number(prices.cartPrice),
-        taxPrice: Number(prices.taxPrice),
-        shippingPrice: Number(prices.shippingPrice),
-        totalPrice: Number(prices.totalPrice),
+        paymentMethod: paymentMethod,
+        itemsPrice: Number(cartPrice),
+        taxPrice: Number(taxPrice),
+        shippingPrice: Number(shippingPrice),
+        totalPrice: Number(totalPrice),
       })
     );
   };
@@ -57,10 +65,11 @@ const PlaceOrder = () => {
       />
       <div className="placeorder">
         <div>
-          <TableOrder
+          <OrderDetails
             tableData={tableData}
-            prices={prices}
-            location={location}
+            {...shipping}
+            {...prices}
+            {...payments}
           />
         </div>
         <div className="placeorder-buttons">

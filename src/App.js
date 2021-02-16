@@ -28,11 +28,11 @@ function App() {
               component={CategoriesRenderer}
             />
             <Route path="/product/:id" component={ProductDetails} />
+            <Route path="/cart/:id?" component={Cart} />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/shipping" component={Shipping} />
             <PrivateRoute path="/payment" component={Payment} />
-            <Route path="/cart/:id?" component={Cart} />
-            <Route path="/placeorder" component={PlaceOrder} />
+            <PrivateRoute path="/placeorder" component={PlaceOrder} />
           </Switch>
         </div>
         <Footer />

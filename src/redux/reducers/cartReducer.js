@@ -4,12 +4,21 @@ import {
   CART_ADD_ITEM_SUCCESS,
   CART_CLEAR_ITEMS,
   CART_REMOVE_ITEM,
+  CART_SAVE_PRODUCTS,
+  CART_SAVE_SHIPPING,
+  CART_SAVE_PRICE_DETAILS,
+  CART_LIST_CLEAR,
+  CART_SAVE_PAYMENT_DETAILS,
 } from "../constants/cart";
 
 let initialState = {
   isLoading: false,
   isSuccess: false,
   cartItems: [],
+  order: [],
+  shipping: [],
+  prices: [],
+  payments: [],
   err: "",
 };
 
@@ -50,6 +59,35 @@ export const cart = (state = initialState, { type, payload }) => {
         ...state,
         cartItems: [],
       };
+
+    case CART_SAVE_PRODUCTS:
+      return { ...state, order: payload };
+
+    // save location
+    case CART_SAVE_SHIPPING:
+      return { ...state, shipping: payload };
+
+    case CART_SAVE_PRICE_DETAILS:
+      return {
+        ...state,
+        prices: payload,
+      };
+
+    case CART_SAVE_PAYMENT_DETAILS:
+      return {
+        ...state,
+        payments: payload,
+      };
+
+    case CART_LIST_CLEAR:
+      return {
+        ...state,
+        order: [],
+        shipping: [],
+        prices: [],
+        payments: [],
+      };
+
     default:
       return state;
   }

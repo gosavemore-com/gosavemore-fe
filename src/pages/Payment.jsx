@@ -3,20 +3,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { Button, Radio } from "antd";
-import { savePaymentDetails } from "../redux/actions/orderAction";
+import { savePaymentDetails } from "../redux/actions/cartAction";
 
 const Payment = () => {
-  const [value, setValue] = useState("");
-  const { paymentMethod } = useSelector((state) => state.orders.payments);
+  const [value, setValue] = useState("paypal");
+  const { paymentMethod } = useSelector((state) => state.cart.payments);
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (paymentMethod !== undefined) {
+      setValue(paymentMethod);
+    }
+  }, [paymentMethod]);
+
   const onChange = (e) => {
     setValue(e.target.value);
   };
-
-  useEffect(() => {
-    setValue(paymentMethod);
-  }, [paymentMethod]);
 
   const handleSubmit = () => {
     dispatch(savePaymentDetails({ paymentMethod: value }));
@@ -31,7 +34,7 @@ const Payment = () => {
           <h3>Payment Choices</h3>
           <Radio.Group onChange={onChange} value={value}>
             <Radio value="paypal">Paypal</Radio>
-            <Radio value="stripe">Stripe </Radio>}
+            <Radio value="stripe">Stripe </Radio>
           </Radio.Group>
         </div>
         <div className="payment-button">

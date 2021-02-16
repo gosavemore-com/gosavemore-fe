@@ -1,33 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Card, Form, Input, Select, Button, Table } from "antd";
+import { Form, Input, Select, Button } from "antd";
 import { states } from "../util/data";
 import { useDispatch } from "react-redux";
-import { saveAddress } from "../redux/actions/orderAction";
+import { saveAddress } from "../redux/actions/cartAction";
 import { useHistory } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 
 const Shipping = () => {
-  const [tableData, setTableData] = useState([]);
-  const { cartItems } = useSelector((state) => state.cart);
-  const { prices } = useSelector((state) => state.orders);
-  const { shipping } = useSelector((state) => state.orders);
+  const { shipping } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
   const history = useHistory();
-
-  useEffect(() => {
-    cartItems.map((item) =>
-      setTableData((data) =>
-        data.concat({
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-        })
-      )
-    );
-  }, [cartItems]);
 
   const layout = {
     labelCol: {
@@ -125,26 +110,3 @@ const Shipping = () => {
 };
 
 export default Shipping;
-
-// address: { type: String, required: true },
-// city: { type: String, required: true },
-// postalCode: { type: String, required: true },
-// country: { type: String, required: true },
-
-// paymentMethod: type: String,
-/*
-paymentResult: {
-  id: { type: String },
-  status: { type: String },
-  update_time: { type: String },
-  email_address: { type: String },
-},
-*/
-// taxPrice: type: Number, default: 0.0,
-// shippingPrice: type: Number, default: 0.0
-// totalPrice: Number, default 0.0
-// isPaid: Boolean default: false,
-// paidAt: Date,
-
-// isDelivered: Boolean,
-// deliveredAt: DATE

@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CartBadge from "./CartBadge";
 import { clearCart } from "../redux/actions/cartAction";
 import SearchBar from "./SearchBar";
-import { clearOrders } from "../redux/actions/orderAction";
+import { clearOrders } from "../redux/actions/cartAction";
 
 const Navigation = () => {
   const { isSuccess } = useSelector((state) => state.users);
