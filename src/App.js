@@ -12,6 +12,7 @@ import Cart from "./pages/Cart";
 import Shipping from "./pages/Shipping";
 import Payment from "./pages/Payment";
 import PlaceOrder from "./pages/PlaceOrder";
+import Order from "./pages/Order";
 
 function App() {
   return (
@@ -28,11 +29,12 @@ function App() {
               component={CategoriesRenderer}
             />
             <Route path="/product/:id" component={ProductDetails} />
+            <Route path="/cart/:id?" component={Cart} />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/shipping" component={Shipping} />
             <PrivateRoute path="/payment" component={Payment} />
-            <Route path="/cart/:id?" component={Cart} />
-            <Route path="/placeorder" component={PlaceOrder} />
+            <PrivateRoute path="/placeorder" component={PlaceOrder} />
+            <PrivateRoute path="/order/:id" component={Order} />
           </Switch>
         </div>
         <Footer />

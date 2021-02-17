@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CartCard from "../components/CartCard";
 import { Button } from "antd";
-import { saveProducts, savePricingDetails } from "../redux/actions/orderAction";
+import { saveProducts, savePricingDetails } from "../redux/actions/cartAction";
 import { useHistory } from "react-router-dom";
 import {
   calculateShipping,

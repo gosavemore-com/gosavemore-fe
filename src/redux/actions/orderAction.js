@@ -3,11 +3,9 @@ import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
-  ORDER_SAVE_LOCATION,
-  ORDER_SAVE_PRICE_DETAILS,
-  ORDER_SAVE_PRODUCTS,
-  ORDER_LIST_CLEAR,
-  ORDER_SAVE_PAYMENT_DETAILS,
+  ORDER_DETAILS_FAIL,
+  ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
 } from "../constants/orders";
 
 export const createOrder = (orders) => async (dispatch) => {
@@ -21,22 +19,14 @@ export const createOrder = (orders) => async (dispatch) => {
   }
 };
 
-export const saveAddress = (data) => async (dispatch) => {
-  dispatch({ type: ORDER_SAVE_LOCATION, payload: data });
-};
+export const fetchOrderById = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: ORDER_DETAILS_REQUEST });
+    const { data } = await axiosRoute().get(`/api/orders/${id}`);
 
-export const saveProducts = (data) => async (dispatch) => {
-  dispatch({ type: ORDER_SAVE_PRODUCTS, payload: data });
-};
-
-export const savePricingDetails = (data) => async (dispatch) => {
-  dispatch({ type: ORDER_SAVE_PRICE_DETAILS, payload: data });
-};
-
-export const savePaymentDetails = (data) => async (dispatch) => {
-  dispatch({ type: ORDER_SAVE_PAYMENT_DETAILS, payload: data });
-};
-
-export const clearOrders = () => async (dispatch) => {
-  dispatch({ type: ORDER_LIST_CLEAR });
+    console.log("this is the data", data);
+    dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
+  } catch (err) {
+    dispatch({ type: ORDER_DETAILS_FAIL, payload: err.response });
+  }
 };

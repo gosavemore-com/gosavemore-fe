@@ -1,33 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Card, Form, Input, Select, Button, Table } from "antd";
+import { Form, Input, Select, Button } from "antd";
 import { states } from "../util/data";
 import { useDispatch } from "react-redux";
-import { saveAddress } from "../redux/actions/orderAction";
+import { saveAddress } from "../redux/actions/cartAction";
 import { useHistory } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 
 const Shipping = () => {
-  const [tableData, setTableData] = useState([]);
-  const { cartItems } = useSelector((state) => state.cart);
-  const { prices } = useSelector((state) => state.orders);
-  const { shipping } = useSelector((state) => state.orders);
+  const { shipping } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
   const history = useHistory();
-
-  useEffect(() => {
-    cartItems.map((item) =>
-      setTableData((data) =>
-        data.concat({
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-        })
-      )
-    );
-  }, [cartItems]);
 
   const layout = {
     labelCol: {
@@ -46,13 +31,13 @@ const Shipping = () => {
   return (
     <>
       <CheckoutSteps step1="process" step2="wait" step3="wait" step4="wait" />
-      <div className="orders">
-        <div className="orders-delivery">
+      <div className="shipping">
+        <div className="shipping-delivery">
           <h3>Delivery Address</h3>
           <Form
             {...layout}
             name="delivery"
-            className="orders-delivery-form"
+            className="shipping-delivery-form"
             initialValues={{
               address: shipping && shipping.address,
               city: shipping && shipping.city,
@@ -72,7 +57,7 @@ const Shipping = () => {
                 },
               ]}
             >
-              <Input className="orders-delivery-form-input" />
+              <Input className="shipping-delivery-form-input" />
             </Form.Item>
             <Form.Item
               label="City"
@@ -84,7 +69,7 @@ const Shipping = () => {
                 },
               ]}
             >
-              <Input className="orders-delivery-form-input" />
+              <Input className="shipping-delivery-form-input" />
             </Form.Item>
             <Form.Item label="State" name="state" required>
               <Select>
@@ -110,7 +95,11 @@ const Shipping = () => {
                 <Select.Option value={"US"}>United States</Select.Option>
               </Select>
             </Form.Item>
-            <Button type="primary" className="orders-submit" htmlType="submit">
+            <Button
+              type="primary"
+              className="shipping-submit"
+              htmlType="submit"
+            >
               Use this address
             </Button>
           </Form>
@@ -121,26 +110,3 @@ const Shipping = () => {
 };
 
 export default Shipping;
-
-// address: { type: String, required: true },
-// city: { type: String, required: true },
-// postalCode: { type: String, required: true },
-// country: { type: String, required: true },
-
-// paymentMethod: type: String,
-/*
-paymentResult: {
-  id: { type: String },
-  status: { type: String },
-  update_time: { type: String },
-  email_address: { type: String },
-},
-*/
-// taxPrice: type: Number, default: 0.0,
-// shippingPrice: type: Number, default: 0.0
-// totalPrice: Number, default 0.0
-// isPaid: Boolean default: false,
-// paidAt: Date,
-
-// isDelivered: Boolean,
-// deliveredAt: DATE
