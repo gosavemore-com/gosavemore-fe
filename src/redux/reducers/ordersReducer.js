@@ -28,7 +28,7 @@ export const orders = (state = initialState, { type, payload }) => {
     case ORDER_DETAILS_REQUEST:
       return { ...state, isLoading: true };
     case ORDER_DETAILS_SUCCESS:
-      return { ...state, isLoading: false, isSuccess: true };
+      return { ...state, isLoading: false, isSuccess: true, ordered: payload };
     case ORDER_DETAILS_FAIL:
       return { ...state, isSuccess: false, err: payload };
 

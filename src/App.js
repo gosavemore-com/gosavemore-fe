@@ -12,6 +12,7 @@ import Cart from "./pages/Cart";
 import Shipping from "./pages/Shipping";
 import Payment from "./pages/Payment";
 import PlaceOrder from "./pages/PlaceOrder";
+import Order from "./pages/Order";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <PrivateRoute path="/shipping" component={Shipping} />
             <PrivateRoute path="/payment" component={Payment} />
             <PrivateRoute path="/placeorder" component={PlaceOrder} />
+            <PrivateRoute path="/order/:id" component={Order} />
           </Switch>
         </div>
         <Footer />
