@@ -60,7 +60,11 @@ const OrderDetails = ({
         <>
           <h3>Order Summary</h3>
           <p>
-            Pretax Price: <span>${cartPrice}</span> <br />
+            {cartPrice && (
+              <>
+                Pretax Price: <span>${cartPrice}</span> <br />
+              </>
+            )}
             Shipping Cost: <span>${shippingPrice}</span> <br />
             Tax Price: <span>${taxPrice}</span>
           </p>
