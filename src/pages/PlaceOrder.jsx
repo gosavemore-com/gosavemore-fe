@@ -13,7 +13,7 @@ const PlaceOrder = () => {
     (state) => state.cart
   );
   const { userId } = useSelector((state) => state.users.user);
-  const { ordered, isSuccess } = useSelector((state) => state.orders);
+  const { ordered } = useSelector((state) => state.orders);
 
   let tableData = [];
 
@@ -26,8 +26,8 @@ const PlaceOrder = () => {
   );
 
   useEffect(() => {
-    if (isSuccess) history.push(`/order/${ordered._id}`);
-  }, [history, isSuccess, ordered._id]);
+    if (ordered) history.push(`/order/${ordered._id}`);
+  }, [history, ordered]);
 
   const handleClick = () => {
     let { address, city, state, country } = shipping;
