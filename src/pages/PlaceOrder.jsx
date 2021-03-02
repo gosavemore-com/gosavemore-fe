@@ -13,16 +13,18 @@ const PlaceOrder = () => {
     (state) => state.cart
   );
   const { userId } = useSelector((state) => state.users.user);
-  const { ordered } = useSelector((state) => state.orders);
+  const { isPlacedOrder, ordered } = useSelector((state) => state.orders);
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    if (ordered.length !== 0 || ordered.length !== undefined) {
-      history.push(`/order/${ordered._id}`);
+    setTableData(order);
+  }, [order]);
 
-      setTableData(ordered);
+  useEffect(() => {
+    if (isPlacedOrder && ordered.length !== 0) {
+      history.push(`/order/${ordered._id}`);
     }
-  }, [history, ordered]);
+  }, [history, isPlacedOrder, ordered]);
 
   const handleClick = () => {
     dispatch(

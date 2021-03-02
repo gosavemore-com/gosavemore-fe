@@ -15,6 +15,7 @@ let initialState = {
   isLoading: false,
   isSuccess: false,
   isPaid: false,
+  isPlacedOrder: false,
   ordered: [],
   err: "",
 };
@@ -31,12 +32,14 @@ export const orders = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         isSuccess: true,
+        isPlacedOrder: true,
         ordered: payload,
       };
     case ORDER_CREATE_FAIL:
       return {
         ...state,
         isSuccess: false,
+        isPlacedOrder: false,
         err: payload,
       };
 
