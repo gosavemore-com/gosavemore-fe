@@ -47,9 +47,13 @@ const ProductDetails = (props) => {
                 >
                   <Form.Item className="details-select">
                     <Select defaultValue={1} onChange={onChangeHandler}>
-                      {[...Array(product.countInStock).keys()].map((x) => (
-                        <Select.Option value={x + 1}>{x + 1}</Select.Option>
-                      ))}
+                      {[...Array(product.countInStock).keys()].map(
+                        (x, index) => (
+                          <Select.Option value={x + 1} key={index}>
+                            {x + 1}
+                          </Select.Option>
+                        )
+                      )}
                     </Select>
                   </Form.Item>
                 </Form>

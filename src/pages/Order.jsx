@@ -9,10 +9,13 @@ import {
 } from "../redux/actions/orderAction";
 import Spinner from "../components/Spinner";
 import { clearCart } from "../redux/actions/cartAction";
+import { Button } from "antd";
+import { useHistory } from "react-router-dom";
 
 const Order = ({ match }) => {
   const orderId = match.params.id;
   const dispatch = useDispatch();
+  const history = useHistory();
   const [tableData, setTableData] = useState([]);
 
   const {
@@ -26,10 +29,12 @@ const Order = ({ match }) => {
     isDelivered,
   } = useSelector((state) => state.orders.ordered);
 
-  const { isSuccess, isLoading, isPaid } = useSelector((state) => state.orders);
+  const { isSuccess, isLoading, isPaymentProcessingSuccess } = useSelector(
+    (state) => state.orders
+  );
 
   useEffect(() => {
-    if (isPaid) {
+    if (isPaymentProcessingSuccess) {
       dispatch(fetchOrderById(orderId));
       dispatch(clearCart());
     }
@@ -37,13 +42,15 @@ const Order = ({ match }) => {
     if (orderItems) {
       setTableData(orderItems);
     }
-    return () => {
-      dispatch(resetOrderPay());
-    };
-  }, [dispatch, isPaid, orderId, orderItems]);
+  }, [dispatch, isPaymentProcessingSuccess, orderId, orderItems]);
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(updateOrderPay(orderId, paymentResult));
+  };
+
+  const handleClick = () => {
+    dispatch(resetOrderPay());
+    history.push("/");
   };
 
   return (
@@ -71,8 +78,16 @@ const Order = ({ match }) => {
           </p>
           <p>
             <strong>Paid:</strong>{" "}
-            {isPaid ? "Thank you for your purchased!" : "Not yet paid."}
+            {isPaymentProcessingSuccess
+              ? "Thank you for your purchased!"
+              : "Not yet paid."}
           </p>
+
+          {isPaymentProcessingSuccess && (
+            <Button type="primary" onClick={handleClick}>
+              Home
+            </Button>
+          )}
         </>
       )}
 
@@ -85,7 +100,7 @@ const Order = ({ match }) => {
         paymentMethod={paymentMethod}
       />
 
-      {!isPaid && (
+      {!isPaymentProcessingSuccess && (
         <div>
           {isLoading && <Spinner />}
 

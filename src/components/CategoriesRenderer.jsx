@@ -18,7 +18,9 @@ const CategoriesRenderer = () => {
   return (
     <div className="categories-layout">
       {filteredItems ? (
-        filteredItems.map((product) => <ProductCard product={product} />)
+        filteredItems.map((product, index) => (
+          <ProductCard product={product} key={index} />
+        ))
       ) : (
         <Spinner />
       )}

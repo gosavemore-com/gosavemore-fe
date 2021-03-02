@@ -14,7 +14,7 @@ import {
 let initialState = {
   isLoading: false,
   isSuccess: false,
-  isPaid: false,
+  isPaymentProcessingSuccess: false,
   isPlacedOrder: false,
   ordered: [],
   err: "",
@@ -72,19 +72,22 @@ export const orders = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
         isSuccess: true,
-        isPaid: true,
+        isPaymentProcessingSuccess: true,
       };
     case ORDER_PAY_FAIL:
       return {
         ...state,
         loading: false,
+        isPaymentProcessingSuccess: false,
         err: payload,
       };
     case ORDER_PAY_RESET:
       return {
         ...state,
         ordered: [],
-        isPaid: false,
+        isPaymentProcessingSuccess: false,
+        isSuccess: false,
+        isLoading: false,
       };
     default:
       return state;

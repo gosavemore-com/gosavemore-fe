@@ -50,16 +50,10 @@ const Cart = () => {
     <div className="cart">
       <div className="cart-item">
         <h2>Shopping Cart</h2>
-        {cartItems.length === 0 ? (
+        {(cartItems.length === 0 && <h5>Cart is empty right now...</h5>) || (
           <>
-            <h5>Cart is empty right now...</h5>
-          </>
-        ) : (
-          <>
-            {cartItems.map((item) => (
-              <>
-                <CartCard item={item} />
-              </>
+            {cartItems.map((item, index) => (
+              <CartCard item={item} key={index} />
             ))}
           </>
         )}

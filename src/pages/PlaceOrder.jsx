@@ -62,6 +62,7 @@ const PlaceOrder = () => {
             {...shipping}
             {...prices}
             {...payments}
+            key={userId}
           />
         </div>
         <div className="placeorder-buttons">
