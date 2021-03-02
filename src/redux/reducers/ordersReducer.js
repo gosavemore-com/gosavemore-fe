@@ -70,14 +70,14 @@ export const orders = (state = initialState, { type, payload }) => {
     case ORDER_PAY_SUCCESS:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         isSuccess: true,
         isPaymentProcessingSuccess: true,
       };
     case ORDER_PAY_FAIL:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         isPaymentProcessingSuccess: false,
         err: payload,
       };
@@ -88,6 +88,7 @@ export const orders = (state = initialState, { type, payload }) => {
         isPaymentProcessingSuccess: false,
         isSuccess: false,
         isLoading: false,
+        isPlacedOrder: false,
       };
     default:
       return state;

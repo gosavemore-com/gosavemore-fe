@@ -8,7 +8,7 @@ import {
   updateOrderPay,
 } from "../redux/actions/orderAction";
 import Spinner from "../components/Spinner";
-import { clearCart } from "../redux/actions/cartAction";
+import { clearCart, clearOrders } from "../redux/actions/cartAction";
 import { Button } from "antd";
 import { useHistory } from "react-router-dom";
 
@@ -27,22 +27,24 @@ const Order = ({ match }) => {
     paymentMethod,
     totalPrice,
     isDelivered,
+    isPaid,
   } = useSelector((state) => state.orders.ordered);
 
-  const { isSuccess, isLoading, isPaymentProcessingSuccess } = useSelector(
+  const { isSuccess, isPaymentProcessingSuccess } = useSelector(
     (state) => state.orders
   );
+
+  useEffect(() => {
+    setTableData(orderItems);
+  }, [orderItems]);
 
   useEffect(() => {
     if (isPaymentProcessingSuccess) {
       dispatch(fetchOrderById(orderId));
       dispatch(clearCart());
+      dispatch(clearOrders());
     }
-
-    if (orderItems) {
-      setTableData(orderItems);
-    }
-  }, [dispatch, isPaymentProcessingSuccess, orderId, orderItems]);
+  }, [dispatch, isPaymentProcessingSuccess, orderId]);
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(updateOrderPay(orderId, paymentResult));
@@ -78,12 +80,10 @@ const Order = ({ match }) => {
           </p>
           <p>
             <strong>Paid:</strong>{" "}
-            {isPaymentProcessingSuccess
-              ? "Thank you for your purchased!"
-              : "Not yet paid."}
+            {isPaid ? "Thank you for your purchased!" : "Not yet paid."}
           </p>
 
-          {isPaymentProcessingSuccess && (
+          {isPaid && (
             <Button type="primary" onClick={handleClick}>
               Home
             </Button>
@@ -100,12 +100,8 @@ const Order = ({ match }) => {
         paymentMethod={paymentMethod}
       />
 
-      {!isPaymentProcessingSuccess && (
-        <div>
-          {isLoading && <Spinner />}
-
-          <PayPalButton amount={totalPrice} onSuccess={successPaymentHandler} />
-        </div>
+      {!isPaid && (
+        <PayPalButton amount={totalPrice} onSuccess={successPaymentHandler} />
       )}
     </div>
   );

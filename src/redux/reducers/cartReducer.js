@@ -82,6 +82,7 @@ export const cart = (state = initialState, { type, payload }) => {
     case CART_LIST_CLEAR:
       return {
         ...state,
+        isLoading: false,
         order: [],
         shipping: [],
         prices: [],
