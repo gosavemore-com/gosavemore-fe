@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { PayPalButton } from "react-paypal-button-v2";
 import OrderDetails from "../components/OrderDetails";
-import {
-  fetchOrderById,
-  updateOrderPay,
-  resetOrderPay,
-} from "../redux/actions/orderAction";
-import axiosRoute from "../util/axiosRoute";
+import { fetchOrderById, updateOrderPay } from "../redux/actions/orderAction";
 import Spinner from "../components/Spinner";
 
 const Order = ({ match }) => {
@@ -34,7 +28,7 @@ const Order = ({ match }) => {
 
   let tableData = [];
 
-  if (orderItems !== undefined) {
+  if (orderItems !== undefined || orderItems.length !== 0) {
     orderItems.map((item) =>
       tableData.push({
         name: item.name,
@@ -45,17 +39,12 @@ const Order = ({ match }) => {
   }
 
   useEffect(() => {
-    dispatch(fetchOrderById(orderId));
-  }, [dispatch, orderId]);
-
-  useEffect(() => {
     if (isPaid) {
       dispatch(fetchOrderById(orderId));
     }
-  }, [dispatch, orderId, isPaid]);
+  }, [dispatch, isPaid, orderId]);
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
     dispatch(updateOrderPay(orderId, paymentResult));
   };
 

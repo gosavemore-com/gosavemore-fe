@@ -21,7 +21,7 @@ let initialState = {
 
 export const orders = (state = initialState, { type, payload }) => {
   switch (type) {
-    // fetch featured products
+    // create order list
     case ORDER_CREATE_REQUEST:
       return {
         isLoading: true,

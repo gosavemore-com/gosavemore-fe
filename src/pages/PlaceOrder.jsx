@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "antd";
@@ -14,43 +14,33 @@ const PlaceOrder = () => {
   );
   const { userId } = useSelector((state) => state.users.user);
   const { ordered } = useSelector((state) => state.orders);
-
-  let tableData = [];
-
-  order.map((item) =>
-    tableData.push({
-      name: item.name,
-      price: item.price,
-      quantity: item.quantity,
-    })
-  );
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    if (ordered) history.push(`/order/${ordered._id}`);
+    if (ordered.length !== 0 || ordered.length !== undefined) {
+      history.push(`/order/${ordered._id}`);
+
+      setTableData(ordered);
+    }
   }, [history, ordered]);
 
   const handleClick = () => {
-    let { address, city, state, country } = shipping;
-    let postalCode = shipping.postal;
-    let { cartPrice, taxPrice, shippingPrice, totalPrice } = prices;
-    let { paymentMethod } = payments;
-
     dispatch(
       createOrder({
         user: userId,
         orderItems: order,
         shippingAddress: {
-          address,
-          city,
-          state,
-          country,
-          postalCode,
+          address: shipping.address,
+          city: shipping.city,
+          state: shipping.state,
+          country: shipping.country,
+          postalCode: shipping.postal,
         },
-        paymentMethod: paymentMethod,
-        itemsPrice: Number(cartPrice),
-        taxPrice: Number(taxPrice),
-        shippingPrice: Number(shippingPrice),
-        totalPrice: Number(totalPrice),
+        paymentMethod: payments.paymentMethod,
+        itemsPrice: Number(prices.cartPrice),
+        taxPrice: Number(prices.taxPrice),
+        shippingPrice: Number(prices.shippingPrice),
+        totalPrice: Number(prices.totalPrice),
       })
     );
   };
