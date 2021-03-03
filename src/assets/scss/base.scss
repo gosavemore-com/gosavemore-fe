@@ -33,7 +33,7 @@ body {
 
 .container {
   max-width: 1200px;
-  min-height: calc(100vh - 38px);
+  min-height: calc(100vh - (38px + 40px));
   margin: 0 auto;
   padding-top: 60px;
 }
