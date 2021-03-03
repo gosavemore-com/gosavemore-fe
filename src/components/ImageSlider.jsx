@@ -9,16 +9,21 @@ const ImageSlider = ({ images }) => {
       <Image.PreviewGroup>
         <Image width={200} preview={true} src={imagePreview} />.
         <div className="image-preview">
-          {images !== undefined
-            ? images.map((image) => {
-                if (image !== imagePreview) return <Image src={image} />;
-              })
-            : ""}
+          {images !== undefined &&
+            images.map((image, index) => {
+              if (image !== imagePreview)
+                return <Image src={image} key={index} />;
+            })}
         </div>
       </Image.PreviewGroup>
       <div className="image-container">
-        {images.map((image) => (
-          <img src={image} onMouseEnter={() => setImagePreview(image)} />
+        {images.map((image, index) => (
+          // eslint-disable-next-line jsx-a11y/alt-text
+          <img
+            src={image}
+            onMouseEnter={() => setImagePreview(image)}
+            key={index}
+          />
         ))}
       </div>
     </div>

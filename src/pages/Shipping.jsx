@@ -73,8 +73,10 @@ const Shipping = () => {
             </Form.Item>
             <Form.Item label="State" name="state" required>
               <Select>
-                {Object.keys(states).map((state) => (
-                  <Select.Option value={state}>{states[state]}</Select.Option>
+                {Object.keys(states).map((state, index) => (
+                  <Select.Option value={state} key={index}>
+                    {states[state]}
+                  </Select.Option>
                 ))}
               </Select>
             </Form.Item>

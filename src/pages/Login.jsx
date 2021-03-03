@@ -73,7 +73,7 @@ const Login = () => {
           </Form.Item>
         </div>
         <div className="login-error">
-          <p>{err !== undefined ? <p>{err}</p> : null} </p>
+          <>{err !== undefined ? <p>{err}</p> : null} </>
         </div>
 
         <Link to="/forgot" className="link">

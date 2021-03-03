@@ -22,8 +22,10 @@ const CartCard = ({ item }) => {
         <p>Price: ${item.price}</p>
         <Form.Item className="cartCard-select">
           <Select value={item.quantity} onChange={onChangeHandler}>
-            {[...Array(item.countInStock).keys()].map((x) => (
-              <Select.Option value={x + 1}>{x + 1}</Select.Option>
+            {[...Array(item.countInStock).keys()].map((x, index) => (
+              <Select.Option value={x + 1} key={index}>
+                {x + 1}
+              </Select.Option>
             ))}
           </Select>
         </Form.Item>

@@ -23,19 +23,16 @@ const Home = () => {
   return (
     <div className="home">
       <CarouselSlider advertisements={advertisements} />
+
       <div className="home-list">
         <h3>Featured Items</h3>
-        {featured !== undefined ? (
+        {(featured && (
           <div className="home-list-products">
-            {featured.map((item) => (
-              <div>
-                <HomeCard key={item._id} item={item} />
-              </div>
+            {featured.map((item, index) => (
+              <HomeCard key={index} item={item} />
             ))}
           </div>
-        ) : (
-          <Spinner className="home-list-spinner" />
-        )}
+        )) || <Spinner className="home-list-spinner" />}
       </div>
     </div>
   );

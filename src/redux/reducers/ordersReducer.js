@@ -14,14 +14,15 @@ import {
 let initialState = {
   isLoading: false,
   isSuccess: false,
-  isPaid: false,
+  isPaymentProcessingSuccess: false,
+  isPlacedOrder: false,
   ordered: [],
   err: "",
 };
 
 export const orders = (state = initialState, { type, payload }) => {
   switch (type) {
-    // fetch featured products
+    // create order list
     case ORDER_CREATE_REQUEST:
       return {
         isLoading: true,
@@ -31,12 +32,14 @@ export const orders = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         isSuccess: true,
+        isPlacedOrder: true,
         ordered: payload,
       };
     case ORDER_CREATE_FAIL:
       return {
         ...state,
         isSuccess: false,
+        isPlacedOrder: false,
         err: payload,
       };
 
@@ -67,21 +70,25 @@ export const orders = (state = initialState, { type, payload }) => {
     case ORDER_PAY_SUCCESS:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         isSuccess: true,
-        isPaid: true,
+        isPaymentProcessingSuccess: true,
       };
     case ORDER_PAY_FAIL:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
+        isPaymentProcessingSuccess: false,
         err: payload,
       };
     case ORDER_PAY_RESET:
       return {
         ...state,
         ordered: [],
-        isPaid: false,
+        isPaymentProcessingSuccess: false,
+        isSuccess: false,
+        isLoading: false,
+        isPlacedOrder: false,
       };
     default:
       return state;

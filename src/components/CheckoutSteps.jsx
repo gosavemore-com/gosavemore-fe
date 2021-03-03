@@ -2,7 +2,6 @@ import React from "react";
 import { Steps, Divider } from "antd";
 import { Link } from "react-router-dom";
 import {
-  FaUserCircle,
   FaRegAddressCard,
   FaCheckCircle,
   FaCartArrowDown,
