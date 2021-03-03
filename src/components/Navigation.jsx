@@ -10,13 +10,13 @@ import CartBadge from "./CartBadge";
 import { clearCart } from "../redux/actions/cartAction";
 import SearchBar from "./SearchBar";
 import { clearOrders } from "../redux/actions/cartAction";
-import { resetOrderPay } from "../redux/actions/orderAction";
 
-const Navigation = () => {
-  const { isSuccess } = useSelector((state) => state.users);
+const Navigation = ({ isTabletOrMobileDevice }) => {
+  const { isSuccess, user } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const history = useHistory();
   const [current, setCurrent] = useState("home");
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = (e) => {
     setCurrent(e.key);
@@ -45,6 +45,13 @@ const Navigation = () => {
                 <Menu.Item key="profile">
                   <NavLink to="/profile">Profile</NavLink>
                 </Menu.Item>
+                {user.isAdmin && (
+                  <>
+                    <Menu.Item key="users">
+                      <NavLink to="/admin/userlist">Users</NavLink>
+                    </Menu.Item>
+                  </>
+                )}
                 <Menu.Item
                   className="menu-logout"
                   onClick={() => {

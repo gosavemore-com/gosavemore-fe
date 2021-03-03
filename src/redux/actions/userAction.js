@@ -10,6 +10,9 @@ import {
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAIL,
+  USER_LIST_FAIL,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
 } from "../constants/users";
 
 export const loginUser = (emailPasswordData, history) => async (dispatch) => {
@@ -55,5 +58,16 @@ export const userRegister = (dataForm, history) => async (dispatch) => {
       type: REGISTER_USER_FAIL,
       payload: err.response,
     });
+  }
+};
+
+export const fetchUserList = () => async (dispatch) => {
+  try {
+    dispatch({ type: USER_LIST_REQUEST });
+    const { data } = await axiosRoute().get("/api/users");
+
+    dispatch({ type: USER_LIST_SUCCESS, payload: data });
+  } catch (err) {
+    dispatch({ type: USER_LIST_FAIL, payload: err.response });
   }
 };
