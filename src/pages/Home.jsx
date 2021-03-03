@@ -8,16 +8,22 @@ import {
   fetchProducts,
   fetchAdvertisement,
 } from "../redux/actions/productsAction";
+import { fetchUserList } from "../redux/actions/userAction";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   const { featured, advertisements } = useSelector((state) => state.products);
+  const { isAdmin } = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(fetchProductFeatured());
     dispatch(fetchProducts());
     dispatch(fetchAdvertisement());
+
+    if (isAdmin) {
+      dispatch(fetchUserList());
+    }
   }, [dispatch]);
 
   return (

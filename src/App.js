@@ -13,12 +13,18 @@ import Shipping from "./pages/Shipping";
 import Payment from "./pages/Payment";
 import PlaceOrder from "./pages/PlaceOrder";
 import Order from "./pages/Order";
+import UserList from "./pages/UserList";
+import { useMediaQuery } from "react-responsive";
 
 function App() {
+  const isTabletOrMobileDevice = useMediaQuery({
+    query: "(max-width: 900px)",
+  });
+
   return (
     <>
       <Router>
-        <Navigation />
+        <Navigation isTabletOrMobileDevice={isTabletOrMobileDevice} />
         <div className="container">
           <Switch>
             <Route exact path="/" component={Home} />
@@ -36,6 +42,7 @@ function App() {
             <PrivateRoute path="/payment" component={Payment} />
             <PrivateRoute path="/placeorder" component={PlaceOrder} />
             <PrivateRoute path="/order/:id" component={Order} />
+            <PrivateRoute path="/admin/userlist" component={UserList} />
           </Switch>
         </div>
         <Footer />
