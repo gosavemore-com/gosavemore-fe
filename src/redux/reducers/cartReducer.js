@@ -29,11 +29,13 @@ export const cart = (state = initialState, { type, payload }) => {
       return { ...state, isLoading: true };
     case CART_ADD_ITEM_SUCCESS:
       const item = payload;
+
       const existItem = state.cartItems.find((x) => x.product === item.product);
 
       if (existItem) {
         return {
           ...state,
+          isLoading: false,
           cartItems: state.cartItems.map((x) =>
             x.product === existItem.product ? item : x
           ),
@@ -41,6 +43,7 @@ export const cart = (state = initialState, { type, payload }) => {
       } else {
         return {
           ...state,
+          isLoading: false,
           cartItems: [...state.cartItems, item],
         };
       }
