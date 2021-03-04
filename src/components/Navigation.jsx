@@ -3,6 +3,7 @@ import { NavLink, Link, useHistory } from "react-router-dom";
 import logo from "../assets/images/logoName.png";
 import Banner from "./Banner";
 import Categories from "./Categories";
+import Sidebar from "../pages/Sidebar";
 import { Menu } from "antd";
 import { logoutUser } from "../redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
@@ -85,6 +86,8 @@ const Navigation = ({ isTabletOrMobileDevice }) => {
         </div>
       </div>
       <Categories className="menu-categories" />
+
+      <Sidebar />
     </>
   );
 };

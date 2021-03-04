@@ -1,26 +1,14 @@
 .tableorders {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  margin-top: 60px;
-
-  &-container {
-    padding: 20px;
-    background-color: $white-one;
-
-    hr {
-      opacity: 0.2;
-      margin-bottom: 10px;
-    }
-  }
-
-  h3 {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 16px;
-  }
+  margin: 0;
 
   h2 {
-    font-weight: 800;
+    text-align: center;
+  }
+
+  .totalPrice {
+    background-color: $white-four;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
   }
 }

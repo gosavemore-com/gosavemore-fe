@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Row, Col } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { loginUser } from "../redux/actions/userAction";
@@ -95,7 +95,7 @@ const Login = () => {
           </Link>
 
           <span className="signup">
-            New to PatriotsChannel?
+            New to GoSaveMore?
             <Link to="/register" className="link">
               <span>Sign Up</span>
             </Link>

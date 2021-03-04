@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
-import { Button, Radio } from "antd";
+import { Button, Radio, Row, Col } from "antd";
 import { savePaymentDetails } from "../redux/actions/cartAction";
 
 const Payment = () => {
@@ -34,7 +34,7 @@ const Payment = () => {
           <h3>Payment Choices</h3>
           <Radio.Group onChange={onChange} value={value}>
             <Radio value="paypal">Paypal</Radio>
-            <Radio value="stripe">Stripe </Radio>
+            {/* <Radio value="stripe">Stripe </Radio> */}
           </Radio.Group>
         </div>
         <div className="payment-button">
