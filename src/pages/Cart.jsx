@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CartCard from "../components/CartCard";
-import { Button } from "antd";
+import { Button, Empty } from "antd";
 import { saveProducts, savePricingDetails } from "../redux/actions/cartAction";
 import { useHistory } from "react-router-dom";
 import {
@@ -50,7 +50,7 @@ const Cart = () => {
     <div className="cart">
       <div className="cart-item">
         <h2>Shopping Cart</h2>
-        {(cartItems.length === 0 && <h5>Cart is empty right now...</h5>) || (
+        {(cartItems.length === 0 && <Empty />) || (
           <>
             {cartItems.map((item, index) => (
               <CartCard item={item} key={index} />

@@ -1,73 +1,14 @@
 .shipping {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 40px;
-  &-item {
-    max-width: 500px;
-    margin: 20px !important;
-  }
+  background-color: $white-one;
+  padding: 20px;
+  margin-top: 20px;
 
-  &-price {
-    margin-right: 40px;
-  }
-
-  &-list {
+  h3 {
     text-align: center;
-    background-color: $white-one;
-    padding: 20px;
-    display: flex;
-
-    h3 {
-      font-size: 18px;
-      text-align: left;
-    }
-
-    h2 {
-      font-weight: bolder;
-      margin-top: 40px;
-    }
-
-    h2:first-child {
-      font-weight: normal;
-    }
-
-    &-products {
-      h3 {
-        text-align: center;
-        text-transform: uppercase;
-      }
-    }
-
-    &-pricing {
-      padding: 0 40px;
-    }
+    text-transform: uppercase;
   }
 
-  &-delivery {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-items: center;
-
-    h3 {
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-    &-form {
-      padding-top: 40px !important;
-      display: flex;
-      flex-direction: column;
-
-      .ant-select {
-        max-width: 200px !important;
-      }
-    }
-  }
-
-  &-submit {
-    align-self: center;
-    width: 260px !important;
+  form {
+    margin-top: 40px;
   }
 }

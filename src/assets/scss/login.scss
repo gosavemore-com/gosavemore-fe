@@ -1,19 +1,18 @@
 .login {
-  margin-top: 160px;
-  @include flex(space-between, flex-start);
+  margin-top: 140px;
+  display: flex;
+  justify-content: center;
 
   &-intro {
-    margin-bottom: 60px;
-    text-transform: uppercase;
     @include flex(center, center);
     flex-direction: column;
     background-color: $white-one;
     width: auto;
-    height: 100%;
-    padding: 30px 40px;
+    padding: 20px;
+    margin-right: 40px;
 
     h2 {
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     .ant-input,
@@ -27,7 +26,7 @@
 
     button {
       width: 120px;
-      margin-top: 40px;
+      margin-top: 20px;
     }
   }
 
@@ -50,13 +49,13 @@
 }
 
 .loginDemo {
-  padding: 30px 40px;
   background-color: $secondary-color;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 40px;
+  justify-content: center;
+  padding: 20px;
 
   h2 {
     color: $white-one;
@@ -64,7 +63,7 @@
 
   &-buttons {
     display: flex;
-    margin-top: 40px;
+    margin-top: 20px;
 
     button {
       margin: 0 20px;
@@ -74,72 +73,39 @@
 // ==> end of wider screen
 
 //====>  media query tablet
-@media only screen and (max-width: 900) {
+@media only screen and (max-width: 768px) {
   .login {
-    margin-top: 140px;
     flex-direction: column;
     align-items: center;
 
-    &-intro {
-      margin-bottom: 10px;
-      @include flex(center, center);
-      flex-direction: column;
-      background-color: $white-one;
-      width: auto;
-      height: 100%;
-      padding: 20px 30px;
-
-      h2 {
-        margin-bottom: 20px;
-      }
-
-      .ant-input,
-      .ant-input-password {
-        width: 400px !important;
-      }
-    }
-
-    &-button {
-      @include flex(center, center);
-
-      button {
-        margin-top: 10px;
-      }
-    }
-
-    &-error {
-      @include flex(center, center);
-      color: $fifth-color;
-    }
-  }
-
-  .signup {
-    @include flex(center, center);
-
-    &-text {
-      @include flex(center, center);
-    }
-
-    span {
-      padding: 0 10px;
+    h2 {
+      font-size: 14px;
     }
   }
 
   .loginDemo {
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 40px;
-    margin-top: 30px;
+    margin-top: 20px;
+  }
+}
 
-    &-buttons {
-      display: flex;
-      margin-top: 10px;
-
-      button {
-        margin: 0 20px;
-      }
+//====>  media query phone
+@media only screen and (max-width: 425px) {
+  .login {
+    p {
+      font-size: 12px;
     }
+
+    .ant-input,
+    .ant-input-affix-wrapper {
+      width: 100% !important;
+    }
+
+    &-intro {
+      margin: 0;
+    }
+  }
+
+  .loginDemo {
+    margin-top: 20px;
   }
 }

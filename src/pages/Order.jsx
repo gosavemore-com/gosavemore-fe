@@ -21,7 +21,6 @@ const Order = ({ match }) => {
   const {
     shippingAddress,
     orderItems,
-    user,
     taxPrice,
     shippingPrice,
     paymentMethod,
@@ -29,6 +28,8 @@ const Order = ({ match }) => {
     isDelivered,
     isPaid,
   } = useSelector((state) => state.orders.ordered);
+
+  const { user } = useSelector((state) => state.users);
 
   const { isSuccess, isPaymentProcessingSuccess } = useSelector(
     (state) => state.orders
@@ -56,54 +57,38 @@ const Order = ({ match }) => {
   };
 
   return (
-    <div className="order">
-      <h2>Order id: {orderId}</h2>
-      <h3>Shipping INFORMATION</h3>
-
-      {isSuccess && (
-        <>
-          {user !== undefined && (
-            <p>
-              <strong>Name: </strong> {user.username}
-            </p>
-          )}
-          <p>
-            <strong>Email: </strong>
-            {user !== undefined && (
-              <a href={`mailto:${user.email}`}>{user.email}</a>
+    <>
+      <div className="order">
+        <h2>Order id: {orderId}</h2>
+        <div className="order-details">
+          <OrderDetails
+            tableData={tableData}
+            {...shippingAddress}
+            taxPrice={taxPrice}
+            shippingPrice={shippingPrice}
+            totalPrice={totalPrice}
+            paymentMethod={paymentMethod}
+            user={user}
+            isDelivered={isDelivered}
+            isPaid={isPaid}
+          />
+          <div className="order-buttons">
+            {!isPaid && (
+              <PayPalButton
+                amount={totalPrice}
+                onSuccess={successPaymentHandler}
+              />
             )}
-            <br />
-          </p>
-          <p>
-            <strong>Delivered:</strong>{" "}
-            {isDelivered ? "Yes, It's on the way" : "Not Yet Delivered."}
-          </p>
-          <p>
-            <strong>Paid:</strong>{" "}
-            {isPaid ? "Thank you for your purchased!" : "Not yet paid."}
-          </p>
 
-          {isPaid && (
-            <Button type="primary" onClick={handleClick}>
-              Home
-            </Button>
-          )}
-        </>
-      )}
-
-      <OrderDetails
-        tableData={tableData}
-        {...shippingAddress}
-        taxPrice={taxPrice}
-        shippingPrice={shippingPrice}
-        totalPrice={totalPrice}
-        paymentMethod={paymentMethod}
-      />
-
-      {!isPaid && (
-        <PayPalButton amount={totalPrice} onSuccess={successPaymentHandler} />
-      )}
-    </div>
+            {isPaid && isSuccess && (
+              <Button type="primary" onClick={handleClick}>
+                Home
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

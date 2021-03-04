@@ -18,7 +18,7 @@ import { useMediaQuery } from "react-responsive";
 
 function App() {
   const isTabletOrMobileDevice = useMediaQuery({
-    query: "(max-width: 900px)",
+    query: "(max-width: 768px)",
   });
 
   return (
