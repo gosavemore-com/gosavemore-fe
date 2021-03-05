@@ -6,7 +6,6 @@ Production: www.gosavemore.com
 
 ## Contributors
 
-
 <br>
 [Dennis Mercado]
 (https://github.com/denmercs)
@@ -15,14 +14,12 @@ Production: www.gosavemore.com
 <img src="https://avatars2.githubusercontent.com/u/12239322?s=400&v=4" width = "200" /> 
 <br>
 
-
 ## Project Overview
 
 [Trello Board](https://trello.com/b/Z4xoywdv/gosavemore)
 
 GoSaveMore.com is a future business ventured and currently registerd as an LLC in Wisconsin.
-This is a Filipino Ecommerce website using ReactJS as a frontend and NodeJS as a backend. 
-
+This is a Filipino Ecommerce website using ReactJS as a frontend and NodeJS as a backend.
 
 ### Key Features
 
@@ -171,3 +168,6 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 ## Documentation
 
 See [Backend Documentation](https://github.com/Lambda-School-Labs/safe-mothers-be) for details on the backend of our project.
+
+//
+March 4, 2021 - took a break today because I had series of interview
